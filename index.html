@@ -1,3 +1,14 @@
+<! -- 
+F1 Bingo Card Generator: https://github.com/jonahhb/F1-Bingo-Card-Generator
+6 March 2023
+
+Authors: 
+Jonah Hood Blaxill: https://github.com/jonahhb
+Eric Andrechek: https://github.com/EricAndrechek
+-->
+
+
+
 <html>
   <head>
     <meta charset="utf-8" />
@@ -19,16 +30,16 @@
         async function main() {
             let pyodide = await loadPyodide();
 
-            await pyodide.loadPackage("micropip");
-            const micropip = pyodide.pyimport("micropip");
-            await micropip.install("https://raw.githubusercontent.com/jonahhb/F1-Bingo-Card-Generator/main/fpdf-1.7.2-py2.py3-none-any.whl");
-
             let resources_url = 'https://raw.githubusercontent.com/jonahhb/F1-Bingo-Card-Generator/main/resources.zip';
             let zipResponse = await fetch(resources_url);
             let zipBinary = await zipResponse.arrayBuffer();
             pyodide.unpackArchive(zipBinary, "zip");
 
-            globalThis.username = prompt("Enter your name: ", "John Doe");
+            await pyodide.loadPackage("micropip");
+            const micropip = pyodide.pyimport("micropip");
+            await micropip.install("https://raw.githubusercontent.com/jonahhb/F1-Bingo-Card-Generator/main/fpdf-1.7.2-py2.py3-none-any.whl");
+
+            globalThis.username = document.getElementById("name").value;
 
             let encoded_string = pyodide.runPython(`
                 from fpdf import FPDF
@@ -77,8 +88,8 @@
                 pdf.image('/home/pyodide/imgs/racestarts.png', x = LOCATIONS[12][0], y = LOCATIONS[12][1], w = SQUARE_SIZE, h = SQUARE_SIZE, type = '', link = '')
                 taken[12] = True
 
-                #place the redflag, safteycar, vsc, images in random open locations
-                required = ['/home/pyodide/imgs/redflag.png', '/home/pyodide/imgs/safteycar.png', '/home/pyodide/imgs/vsc.png']
+                #place the redflag, safetycar, vsc, images in random open locations
+                required = ['/home/pyodide/imgs/redflag.png', '/home/pyodide/imgs/safetycar.png', '/home/pyodide/imgs/vsc.png']
                 for imgLoc in required:
                     #pick a random square
                     square = random.randint(0,24)
@@ -95,7 +106,7 @@
                 #remove the images we have already placed
                 imgs.remove('racestarts.png')
                 imgs.remove('redflag.png')
-                imgs.remove('safteycar.png')
+                imgs.remove('safetycar.png')
                 imgs.remove('vsc.png')
 
                 #place 21 random images in random open locations without duplicates
@@ -137,27 +148,58 @@
             link.download = "bingo_card.pdf";
             link.click();
         }
-        main();
+        window.onload = function() {
+            document.getElementById("generate").addEventListener("click", generateCard);
+        }
+        //add event listener to the generate button so we can see that it is working
+        function generateCard() {
+          console.log("generate button clicked");
+          //move text box and button out of the way
+          document.getElementById("name").style.display = "none";
+          document.getElementById("generate").style.display = "none";
+          //show text saying the card is being generated
+          document.getElementById("generating").style.display = "block";
+
+          //generate the Card
+          main();
+        }
     </script>
     <div id="main">
-      <header id="title">F1 Bingo Card Generator</header>
+      <h1 id="title">F1 Bingo Card Generator</h1>
       <div id="aboutSec">
-        <h1 id="about">About</h1>
+        <h2 id="about">About</h2>
+        <hr>
         <p id="aboutText">
           This F1 Bingo Card Generator is a simple web app that generates a bingo card for the 2023 F1 season.  This bingo card is made up of a random assortment of 
-          bingo squares that are related to the 2023 F1 season.  The bingo card is generated using Python and the FPDF library.  Your name is only used to put it in the 
-          top left corner of the bingo card, so make it whatever you want. 
-
-          <br><br>
-
-          The intention with the bingo squares with the small circles and red numbers is that the event in the square has to happen at least that many times in 
-          the season before that event can be checked off.  For example, with the "Red Flag" square, the red flag has to be shown at least 4 times in the season.  
-          Everytime there was a red flag you would cross off one of the numbers in the circle.  Once all the numbers are crossed off, you can check off the square.
+          bingo squares that are related to the 2023 F1 season (see below: Possible Squares).  The bingo card is generated using Python and the FPDF library 
+          (see below: About the Generator).  Your name is only used to put it in the top left corner of the bingo card, so make it whatever you want. 
         </p>
       </div>
       <div id="generatorSec">
         <input class="gen" type="text" id="name" placeholder="Enter your name">
-        <button class="gen" id="generate" onclick="generate()">Generate</button>
+        <button class="gen" id="generate">Generate</button>
+        <p id="generating">Generating...</p>
+      </div>
+      <p>Note: The name field is not required but will put a name at the top left of the bingo card.</p>
+      <div id="rulesSection">
+        <h2>Intended Rules</h2>
+        <hr>
+        The intention with the bingo squares with the small circles and red numbers is that the event in the square has to happen at least that many times in 
+        the season before that event can be checked off.  For example, with the "Red Flag" square, the red flag has to be shown at least 4 times in the season.  
+        Every time there was a red flag you would cross off one of the numbers in the circle.  Once all the numbers are crossed off, you can check off the square.
+        <br><br>
+        Other than the above mentioned regular bingo rules apply.  
+        <br><br>
+        At the end of the day it's all just for fun, so play it however you want!
+        
+        <h2>Possible Squares</h2>
+        <hr>
+        <div class="squares">
+          <img class="squImg" src="imgs/1.png" alt="Max Won the World Drivers Championship">
+        </div>
+        <h2>About the Generator</h2>
+        <hr>
+
       </div>
     </div>
   </body>
