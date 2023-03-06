@@ -1,0 +1,45 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1em;
+    font-weight: 300;
+    color: #000;
+    background-color: #d7d7d7;
+    margin: 0;
+    padding: 0;
+}
+
+#main {
+    width: 75%;
+    height: 100%;
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+    margin: auto;
+    border-radius: 10px;
+}
+
+#title {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.5em;
+    font-weight: 300;
+    color: #000;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.gen{
+    margin: 5px;
+}
+
+
+#generatorSec{
+    width: 300px;
+    height: 100px;
+    background-color: #ff0000;
+    text-align: center;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
