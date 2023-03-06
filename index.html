@@ -1,6 +1,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
+    <link rel="stylesheet" href="styles.css">
+    <title>F1 Bingo Card Generator</title>
   </head>
   <body>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/pyodide/v0.22.1/full/pyodide.js"></script>
@@ -90,5 +92,26 @@
       }
       main();
     </script>
+    <div id="main">
+      <header id="title">F1 Bingo Card Generator</header>
+      <div id="aboutSec">
+        <h1 id="about">About</h1>
+        <p id="aboutText">
+          This F1 Bingo Card Generator is a simple web app that generates a bingo card for the 2023 F1 season.  This bingo card is made up of a random assortment of 
+          bingo squares that are related to the 2023 F1 season.  The bingo card is generated using Python and the FPDF library.  Your name is only used to put it in the 
+          top left corner of the bingo card, so make it whatever you want. 
+
+          <br><br>
+
+          The intention with the bingo squares with the small circles and red numbers is that the event in the square has to happen at least that many times in 
+          the season before that event can be checked off.  For example, with the "Red Flag" square, the red flag has to be shown at least 4 times in the season.  
+          Everytime there was a red flag you would cross off one of the numbers in the circle.  Once all the numbers are crossed off, you can check off the square.
+        </p>
+      </div>
+      <div id="generatorSec">
+        <input class="gen" type="text" id="name" placeholder="Enter your name">
+        <button class="gen" id="generate" onclick="generate()">Generate</button>
+      </div>
+    </div>
   </body>
 </html>
