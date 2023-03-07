@@ -9,6 +9,7 @@ import base64
 
 class Bingo():
     def __init__(self, web = False):
+        print(web)
         # self.local_dir = "/home/pyodide/" if web else "" 
         self.local_dir = ""
         #create the pdf
