@@ -1,24 +1,5 @@
 import { asyncRun } from "./py-worker.js";
 
-const init_script = `card = Bingo()`;
-
-const empty_context = {};
-
-async function begin() {
-  try {
-    const { results, error } = await asyncRun(init_script, empty_context);
-    if (results) {
-      console.log("pyodideWorker return results: ", results);
-    } else if (error) {
-      console.log("pyodideWorker error: ", error);
-    }
-  } catch (e) {
-    console.log(
-      `Error in pyodideWorker at ${e.filename}, Line: ${e.lineno}, ${e.message}`,
-    );
-  }
-}
-
 function downloadPDF(encoded_string) {
     let decoded_string = atob(encoded_string);
     let bytes = new Uint8Array(decoded_string.length);
@@ -36,19 +17,44 @@ function downloadPDF(encoded_string) {
     link.click();
 }
 
-const save_script = `
-from js import username
-card.name(username)
-card.save()
-encoding_string = card.base64()
-encoding_string
-`;
+async function download() {
+    try {
+      const { results, error } = await asyncRun('base64', {});
+      if (results) {
+        console.log("Done 3/3");
+        downloadPDF(results);
+      } else if (error) {
+        console.log("pyodideWorker error: ", error);
+      }
+    } catch (e) {
+      console.log(
+        `Error in pyodideWorker at ${e.filename}, Line: ${e.lineno}, ${e.message}`,
+      );
+    }
+  }
+
+async function save() {
+    try {
+      const { results, error } = await asyncRun('save', {});
+      if (results) {
+        console.log("Done 2/3");
+        download();
+      } else if (error) {
+        console.log("pyodideWorker error: ", error);
+      }
+    } catch (e) {
+      console.log(
+        `Error in pyodideWorker at ${e.filename}, Line: ${e.lineno}, ${e.message}`,
+      );
+    }
+  }
 
 async function name() {
   try {
-    const { results, error } = await asyncRun(save_script, {username: document.getElementById("name").value});
+    const { results, error } = await asyncRun('name', {username: document.getElementById("name").value});
     if (results) {
-        downloadPDF(results);
+        console.log("Done 1/3");
+        save();
     } else if (error) {
       console.log("pyodideWorker error: ", error);
     }
@@ -59,4 +65,7 @@ async function name() {
   }
 }
 
-main();
+window.onload = function() {
+    document.getElementById("generate").addEventListener("click", name);
+    // TODO: allow enter key to trigger generate
+}
