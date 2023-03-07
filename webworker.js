@@ -2,37 +2,52 @@
 
 importScripts("https://cdn.jsdelivr.net/pyodide/v0.22.1/full/pyodide.js");
 
+let step = -1;
+
+function increment_step() {
+    step += 1;
+    return step;
+}
+
+function update_progress(msg) {
+    console.log(msg);
+    self.postMessage({ results: increment_step(), id: 0 });
+}
+
 async function loadPyodideAndPackages() {
     // Load pyodide
-    console.log("Loading Pyodide... (this may take a while)");
+    update_progress("Loading Pyodide... (this may take a while)");
     self.pyodide = await loadPyodide();
     // Load micropip
-    console.log("Loading micropip...");
+    update_progress("Loading micropip...");
     await self.pyodide.loadPackage("micropip");
     // Import micropip
-    console.log("Importing micropip...")
+    update_progress("Importing micropip...")
     self.micropip = await self.pyodide.pyimport("micropip");
     // Install fpdf
-    console.log("Installing fpdf...");
+    update_progress("Installing fpdf...");
     await self.micropip.install("https://raw.githubusercontent.com/f1-tools/F1-Bingo-Card-Generator/main/fpdf-1.7.2-py2.py3-none-any.whl");
 
     self.resources_url = 'https://raw.githubusercontent.com/f1-tools/F1-Bingo-Card-Generator/main/resources.zip';
-    console.log("Loading resources... (this may take a while)");
+    update_progress("Loading resources... (this may take a while)");
     self.zipResponse = await fetch(self.resources_url);
-    console.log("Unpacking resources... (this may take a while)");
+    update_progress("Unpacking resources... (this may take a while)");
     self.zipBinary = await self.zipResponse.arrayBuffer();
     await self.pyodide.unpackArchive(self.zipBinary, "zip");
 
     // Import 
-    console.log("Importing bingo_maker...");
+    update_progress("Importing bingo_maker...");
     await self.pyodide.loadPackagesFromImports("bingo_maker");
     self.bingo_maker = await self.pyodide.pyimport("bingo_maker");
 
-    console.log("Creating card... (this may take a while)");
+    
+    update_progress("Creating card... (this may take a while)");
     // TODO: break up init into smaller functions so we can show progress
     self.card = await self.bingo_maker.Bingo();
+    update_progress("Done and ready for name");
 }
 let pyodideReadyPromise = loadPyodideAndPackages();
+
 
 self.onmessage = async (event) => {
     // make sure loading is done
@@ -47,7 +62,7 @@ self.onmessage = async (event) => {
     try {
         if (cmd === "save") {
             await self.card.save();
-            self.postMessage({ results: "Done", id });
+            self.postMessage({ results: increment_step(), id });
         }
         else if (cmd === "base64") {
             const results = await self.card.base64_export();
@@ -55,7 +70,7 @@ self.onmessage = async (event) => {
         } else {
             let set_name = self.username || "";
             await self.card.name(set_name);
-            self.postMessage({ results: "Done", id });
+            self.postMessage({ results: increment_step(), id });
         }
     } catch (error) {
         self.postMessage({ error: error.message, id });
