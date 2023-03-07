@@ -7,19 +7,23 @@ function downloadPDF(encoded_string) {
         bytes[i] = decoded_string.charCodeAt(i);
     }
     let blob = new Blob([bytes], {type: "application/pdf"});
-    // let link = document.createElement('a');
-    // link.href = window.URL.createObjectURL(blob);
+    //let link = document.createElement('a');
+    //link.href = window.URL.createObjectURL(blob);
     let filename = "F1 Bingo Card.pdf";
     if (document.getElementById("name").value != "") {
         filename = "F1 Bingo Card - " + document.getElementById("name").value + ".pdf";
     }
     let ifg = document.createElement("iframe");
-    ifg.src = URL.createObjectURL(blob);
+    ifg.src = (URL.createObjectURL(blob));
+    ifg.title = filename;
     document.getElementById("iframe-box").appendChild(ifg);
     document.getElementById("docView").style.display = "block";
+    // TODO:  pdf view height fix
+    
     // link.download = filename;
     // link.target = "_blank";
     // link.click();
+
     document.getElementById("generate").style.display = "block";
     document.getElementById("name").disabled = false;
     document.getElementById("progress").style.display = "none";
@@ -96,6 +100,8 @@ function event(e) {
 
 window.onload = function() {
     document.getElementById("generate").addEventListener("click", name);
-    // TODO: allow enter key to trigger generate
+    //allow enter key to trigger generate
     document.getElementById("name").addEventListener("keyup", event);
+    // TODO:  download button
+    //document.getElementById("downloadButton").addEventListener("click", FUNC HERE);
 }

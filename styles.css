@@ -6,11 +6,21 @@
 
 #docView {
     display: none;
+    height: 100%;
 }
 
 #iframe-box
 {
-    width:100%; height:100%;
+    width: 100%;
+    height: 100%;
+}
+iframe {
+    width: 100%;
+}
+
+#fileBox{
+    height: 100%;
+    width: 100%;
 }
 
 #progress {
