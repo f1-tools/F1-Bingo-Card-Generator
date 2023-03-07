@@ -13,6 +13,9 @@ Eric Andrechek: https://github.com/EricAndrechek
   <head>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <title>F1 Bingo Card Generator</title>
   </head>
   <body>
@@ -147,6 +150,8 @@ Eric Andrechek: https://github.com/EricAndrechek
             link.href = window.URL.createObjectURL(blob);
             link.download = "bingo_card.pdf";
             link.click();
+
+            reshowGenerateButton();
         }
         window.onload = function() {
             document.getElementById("generate").addEventListener("click", generateCard);
@@ -162,6 +167,13 @@ Eric Andrechek: https://github.com/EricAndrechek
 
           //generate the Card
           main();
+        }
+        function reshowGenerateButton() {
+          //move text box and button back into place
+          document.getElementById("name").style.display = "block";
+          document.getElementById("generate").style.display = "block";
+          //hide text saying the card is being generated
+          document.getElementById("generating").style.display = "none";
         }
     </script>
     <div id="main">
@@ -196,6 +208,98 @@ Eric Andrechek: https://github.com/EricAndrechek
         <hr>
         <div class="squares">
           <img class="squImg" src="imgs/1.png" alt="Max Won the World Drivers Championship">
+          <p class="squInfoTitle">Max Won the World Drivers Championship</p>
+          <p class="squInfo">This square is intended to be crossed off after Max (inevitably) wins the 2023 WDC</p>
+        </div>
+        <div class="squares">
+          <img class="squImg" src="imgs/2.png" alt="message here">
+          <p class="squInfoTitle">message here</p>
+          <p class="squInfo">message here</p>
+        </div>
+        <div class="squares">
+          <img class="squImg" src="imgs/3.png" alt="message here">
+          <p class="squInfoTitle">message here</p>
+          <p class="squInfo">message here</p>
+        </div>
+        <div class="squares">
+          <img class="squImg" src="imgs/4.png" alt="message here">
+          <p class="squInfoTitle">message here</p>
+          <p class="squInfo">message here</p>
+        </div>
+        <div class="squares">
+          <img class="squImg" src="imgs/5.png" alt="message here">
+          <p class="squInfoTitle">message here</p>
+          <p class="squInfo">message here</p>
+        </div>
+        <div class="squares">
+          <img class="squImg" src="imgs/6.png" alt="message here">
+          <p class="squInfoTitle">message here</p>
+          <p class="squInfo">message here</p>
+        </div>
+        <div class="squares">
+          <img class="squImg" src="imgs/7.png" alt="message here">
+          <p class="squInfoTitle">message here</p>
+          <p class="squInfo">message here</p>
+        </div>
+        <div class="squares">
+          <img class="squImg" src="imgs/8.png" alt="message here">
+          <p class="squInfoTitle">message here</p>
+          <p class="squInfo">message here</p>
+        </div>
+        <div class="squares">
+          <img class="squImg" src="imgs/9.png" alt="message here">
+          <p class="squInfoTitle">message here</p>
+          <p class="squInfo">message here</p>
+        </div>
+        <div class="squares">
+          <img class="squImg" src="imgs/10.png" alt="message here">
+          <p class="squInfoTitle">message here</p>
+          <p class="squInfo">message here</p>
+        </div>
+        <div class="squares">
+          <img class="squImg" src="imgs/11.png" alt="message here">
+          <p class="squInfoTitle">message here</p>
+          <p class="squInfo">message here</p>
+        </div>
+        <div class="squares">
+          <img class="squImg" src="imgs/12.png" alt="message here">
+          <p class="squInfoTitle">message here</p>
+          <p class="squInfo">message here</p>
+        </div>
+        <div class="squares">
+          <img class="squImg" src="imgs/13.png" alt="message here">
+          <p class="squInfoTitle">message here</p>
+          <p class="squInfo">message here</p>
+        </div>
+        <div class="squares">
+          <img class="squImg" src="imgs/14.png" alt="message here">
+          <p class="squInfoTitle">message here</p>
+          <p class="squInfo">message here</p>
+        </div>
+        <div class="squares">
+          <img class="squImg" src="imgs/15.png" alt="message here">
+          <p class="squInfoTitle">message here</p>
+          <p class="squInfo">message here</p>
+        </div>
+        <div class="squares">
+          <img class="squImg" src="imgs/16.png" alt="message here">
+          <p class="squInfoTitle">message here</p>
+          <p class="squInfo">message here</p>
+        </div>
+        <div class="squares">
+          <img class="squImg" src="imgs/17.png" alt="message here">
+          <p class="squInfoTitle">message here</p>
+          <p class="squInfo">message here</p>
+        </div>
+        <div class="squares">
+          <img class="squImg" src="imgs/18.png" alt="message here">
+          <p class="squInfoTitle">message here</p>
+          <p class="squInfo">message here</p>
+        </div>
+        <div class="squares">
+          <img class="squImg" src="imgs/19.png" alt="message here">
+          <p class="squInfoTitle">message here</p>
+          <p class="squInfo">message here</p>
         </div>
         <h2>About the Generator</h2>
         <hr>

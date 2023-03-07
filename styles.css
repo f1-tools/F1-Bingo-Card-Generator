@@ -1,9 +1,9 @@
 body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 1em;
     font-weight: 300;
-    color: #000;
-    background-color: #d7d7d7;
+    color: #ffffff;
+    background-color: #111111;
     margin: 0;
     padding: 0;
 }
@@ -11,7 +11,6 @@ body {
 #main {
     width: 70%;
     height: 100%;
-    background-color: #fff;
     margin: 0;
     margin-left: 10px;
     margin-right: 10px;
@@ -52,20 +51,28 @@ body {
 }
 
 .squares {
-    width: 320px;
-    height: auto;
-    background-color: #fff;
-    border-radius: 25px;
+    font-size: 18px;
     margin: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-color: #000;
-    border-style: solid; /* remove later */
+    width: 320px; 
+    height: auto;
+    text-align: center;
+    display:inline-block;
+    vertical-align: top;
 }
 
 .squImg {
     width: 300px;
     height: 300px;
-    
+    border-radius: 10px;
+}
+
+.squInfoTitle {
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.squInfo {
+    font-size: 12px;
+    text-align: center;
 }
