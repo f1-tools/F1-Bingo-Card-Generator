@@ -3,7 +3,7 @@ const pyodideWorker = new Worker("./webworker.js");
 const callbacks = {0: (data) => {
     console.log("On step " + data.results + " of 34");
     // TODO: Add a progress bar
-    document.getElementById("progress").innerHTML = data.results;
+    document.getElementById("progress").value = data.results;
   }
 };
 
