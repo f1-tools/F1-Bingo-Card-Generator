@@ -42,7 +42,7 @@ async function loadPyodideAndPackages() {
 
     
     update_progress("Creating card... (this may take a while)");
-    self.card = await self.bingo_maker.Bingo();
+    self.card = await self.bingo_maker.Bingo(true);
     for (let i = 0; i < 25; i++) {
         update_progress();
         self.card.steps(i);
