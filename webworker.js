@@ -10,7 +10,9 @@ function increment_step() {
 }
 
 function update_progress(msg) {
-    console.log(msg);
+    if (msg != "") {
+        console.log(msg);
+    }
     self.postMessage({ results: increment_step(), id: 0 });
 }
 
@@ -42,8 +44,11 @@ async function loadPyodideAndPackages() {
 
     
     update_progress("Creating card... (this may take a while)");
-    // TODO: break up init into smaller functions so we can show progress
-    self.card = await self.bingo_maker.Bingo();
+    self.card = await self.bingo_maker.Bingo(true);
+    for (let i = 0; i < 25; i++) {
+        update_progress();
+        self.card.steps(i);
+    }
     update_progress("Done and ready for name");
 }
 let pyodideReadyPromise = loadPyodideAndPackages();
