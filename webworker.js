@@ -10,7 +10,9 @@ function increment_step() {
 }
 
 function update_progress(msg) {
-    console.log(msg);
+    if (msg != "") {
+        console.log(msg);
+    }
     self.postMessage({ results: increment_step(), id: 0 });
 }
 
