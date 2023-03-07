@@ -10,10 +10,24 @@ function increment_step() {
 }
 
 function update_progress(msg) {
-    if (msg != "") {
+    if (msg != "" && msg != undefined) {
         console.log(msg);
     }
     self.postMessage({ results: increment_step(), id: 0 });
+}
+
+async function startPDF() {
+    if (self.bingo_maker == undefined) {
+        await loadPyodideAndPackages();
+    }
+    step = -1;
+    update_progress("Creating card... (this may take a while)");
+    self.card = await self.bingo_maker.Bingo(true);
+    for (let i = 0; i < 25; i++) {
+        update_progress();
+        await self.card.steps(i);
+    }
+    update_progress("Done and ready for name");
 }
 
 async function loadPyodideAndPackages() {
@@ -41,22 +55,13 @@ async function loadPyodideAndPackages() {
     update_progress("Importing bingo_maker...");
     await self.pyodide.loadPackagesFromImports("bingo_maker");
     self.bingo_maker = await self.pyodide.pyimport("bingo_maker");
-
-    
-    update_progress("Creating card... (this may take a while)");
-    self.card = await self.bingo_maker.Bingo(true);
-    for (let i = 0; i < 25; i++) {
-        update_progress();
-        self.card.steps(i);
-    }
-    update_progress("Done and ready for name");
 }
-let pyodideReadyPromise = loadPyodideAndPackages();
+let pdfReadyPromise = startPDF();
 
 
 self.onmessage = async (event) => {
     // make sure loading is done
-    await pyodideReadyPromise;
+    await pdfReadyPromise;
     // Don't bother yet with this line, suppose our API is built in such a way:
     const { id, cmd, ...context } = event.data;
     // The worker copies the context in its own "memory" (an object mapping name to values)
@@ -72,6 +77,7 @@ self.onmessage = async (event) => {
         else if (cmd === "base64") {
             const results = await self.card.base64_export();
             self.postMessage({ results, id });
+            pdfReadyPromise = startPDF();
         } else {
             let set_name = self.username || "";
             await self.card.name(set_name);
