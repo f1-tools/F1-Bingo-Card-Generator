@@ -108,21 +108,26 @@
               Last minute instructions
             </h2>
             <div class="container">
-              <div class="field">
-                <div class="box padding">
+              
+                <div class="box">
                   <label class="label">F1BingoCardInator3000</label>
                   <input class="input" type="text" placeholder="Text input" id="name" autofocus>
                   <div class="control">
-                      <button class="button is-danger" id="generate">Generate</button>
+                      <button class="button is-danger my-2" id="generate">Generate</button>
                   </div>
-                  <progress id="progress" class="progress is large is-danger" value="0" max="36">90%</progress>
+                  <progress id="progress" class="progress is large is-danger my-2" value="0" max="36">90%</progress>
                   <p class="help">
                       Note about name
                   </p>
-              </div>
-              </div>
+            
+                </div>
             </div>
-            <div id="iframe-box"></div>
+            <div class="container" id="docView">
+              <div class="box">
+                <button id="downloadButton" class="button is-danger my-2">Download PDF</button>
+                <div id="iframe-box"></div>
+              </div>
+          </div>
           </section>
           <!--==============================CODE FOR THE BINGO CARD GENERATOR END==============================-->
           <!--==============================CODE FOR THE ABOUT THE GENERATOR START==============================-->

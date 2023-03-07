@@ -16,6 +16,7 @@ function downloadPDF(encoded_string) {
     let ifg = document.createElement("iframe");
     ifg.src = URL.createObjectURL(blob);
     document.getElementById("iframe-box").appendChild(ifg);
+    document.getElementById("docView").style.display = "block";
     // link.download = filename;
     // link.target = "_blank";
     // link.click();
@@ -60,9 +61,19 @@ async function save() {
 
 async function name() {
   try {
+    //hide generate button
     document.getElementById("generate").style.display = "none";
+    //disable name input
     document.getElementById("name").disabled = true;
+    //show progress bar
     document.getElementById("progress").style.display = "block";
+    //remove previous iframe if it exists
+    let ifg = document.getElementById("iframe-box").firstChild
+    if (ifg != null) {
+      document.getElementById("iframe-box").removeChild(ifg);
+    }
+    document.getElementById("docView").style.display = "none";
+
     const { results, error } = await asyncRun('name', {username: document.getElementById("name").value});
     if (results) {
         console.log("Done 1/3");
@@ -77,7 +88,14 @@ async function name() {
   }
 }
 
+function event(e) {
+    if (e.keyCode == 13) {
+        name();
+    }
+}
+
 window.onload = function() {
     document.getElementById("generate").addEventListener("click", name);
     // TODO: allow enter key to trigger generate
+    document.getElementById("name").addEventListener("keyup", event);
 }
