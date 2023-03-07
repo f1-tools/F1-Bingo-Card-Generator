@@ -7,15 +7,18 @@ function downloadPDF(encoded_string) {
         bytes[i] = decoded_string.charCodeAt(i);
     }
     let blob = new Blob([bytes], {type: "application/pdf"});
-    let link = document.createElement('a');
-    link.href = window.URL.createObjectURL(blob);
+    // let link = document.createElement('a');
+    // link.href = window.URL.createObjectURL(blob);
     let filename = "F1 Bingo Card.pdf";
     if (document.getElementById("name").value != "") {
         filename = "F1 Bingo Card - " + document.getElementById("name").value + ".pdf";
     }
-    link.download = filename;
-    link.target = "_blank";
-    link.click();
+    let ifg = document.createElement("iframe");
+    ifg.src = URL.createObjectURL(blob);
+    document.getElementById("iframe-box").appendChild(ifg);
+    // link.download = filename;
+    // link.target = "_blank";
+    // link.click();
     document.getElementById("generate").style.display = "block";
     document.getElementById("name").disabled = false;
     document.getElementById("progress").style.display = "none";
