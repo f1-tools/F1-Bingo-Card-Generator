@@ -14,6 +14,7 @@ function downloadPDF(encoded_string) {
         filename = "F1 Bingo Card - " + document.getElementById("name").value + ".pdf";
     }
     link.download = filename;
+    link.target = "_blank";
     link.click();
     document.getElementById("generate").style.display = "block";
     document.getElementById("name").disabled = false;
