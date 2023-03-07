@@ -17,6 +17,8 @@ function downloadPDF(encoded_string) {
     link.click();
     document.getElementById("generate").style.display = "block";
     document.getElementById("progress").style.display = "none";
+    document.getElementById("progress").value = 0;
+
 }
 
 async function download() {
