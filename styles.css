@@ -7,3 +7,7 @@
 #progress {
     display:none;
 }
+
+.column {
+    min-width: 300px;
+}

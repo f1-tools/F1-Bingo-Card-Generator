@@ -16,6 +16,7 @@ function downloadPDF(encoded_string) {
     link.download = filename;
     link.click();
     document.getElementById("generate").style.display = "block";
+    document.getElementById("name").disabled = false;
     document.getElementById("progress").style.display = "none";
     document.getElementById("progress").value = 0;
 
@@ -56,6 +57,7 @@ async function save() {
 async function name() {
   try {
     document.getElementById("generate").style.display = "none";
+    document.getElementById("name").disabled = true;
     document.getElementById("progress").style.display = "block";
     const { results, error } = await asyncRun('name', {username: document.getElementById("name").value});
     if (results) {
