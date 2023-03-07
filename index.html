@@ -1,479 +1,1458 @@
-<! -- 
-F1 Bingo Card Generator: https://github.com/jonahhb/F1-Bingo-Card-Generator
-6 March 2023
-
-Authors: 
-Jonah Hood Blaxill: https://github.com/jonahhb
-Eric Andrechek: https://github.com/EricAndrechek
--->
-
-
-
+<!DOCTYPE html>
 <html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5ZR0M75GHR"></script>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+    <head>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 
-    gtag('config', 'G-5ZR0M75GHR');
-    </script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8282094253815988"
-    crossorigin="anonymous"></script>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-5ZR0M75GHR"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-5ZR0M75GHR');
+        </script>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8282094253815988"
+        crossorigin="anonymous"></script>
+
+
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="styles.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <title>F1 Bingo Card Generator</title>
-  </head>
-  <body>
-    <script src="./main.js" type="module"></script>
-    <script>
+    </head>
+    <body>
+        <script src="./main.js" type="module"></script>
+        <!--==============================CODE FOR THE NAVBAR BEGIN==============================-->
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+              <a class="navbar-item">
+                F1-Tools
+              </a>
+          
+              <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+              </a>
+            </div>
+          
+            <div id="navbarBasicExample" class="navbar-menu">
+              <div class="navbar-start">
+                <a class="navbar-item">
+                    F1 Bingo Card Generator
+                  </a>
+                <a class="navbar-item">
+                  About
+                </a>
+          
+                <a class="navbar-item">
+                  Intended Rules
+                </a>
 
-        window.onload = function() {
-            document.getElementById("generate").addEventListener("click", generateCard);
-        }
-        //add event listener to the generate button so we can see that it is working
-        function generateCard() {
-          console.log("generate button clicked");
-          //move text box and button out of the way
-          document.getElementById("name").style.display = "none";
-          document.getElementById("generate").style.display = "none";
-          //show text saying the card is being generated
-          document.getElementById("generating").style.display = "block";
-        }
-        function reshowGenerateButton() {
-          //move text box and button back into place
-          document.getElementById("name").style.display = "block";
-          document.getElementById("generate").style.display = "block";
-          //hide text saying the card is being generated
-          document.getElementById("generating").style.display = "none";
-        }
-    </script>
-    <div id="main">
-      <h1 id="title">F1 Bingo Card Generator</h1>
-      <div id="aboutSec">
-        <h2 id="about">About</h2>
-        <hr>
-        <p id="aboutText">
-          THIS WEBSITE IS CURRENTLY UNDER CONSTRUCTION.  THE MAKE BINGO CARD BUTTON DOES WORK THOUGH :)
-        </p>
-        <p id="aboutText">
-          This F1 Bingo Card Generator is a simple web app that generates a bingo card for the 2023 F1 season.  This bingo card is made up of a random assortment of 
-          bingo squares that are related to the 2023 F1 season (see below: Possible Squares).  The bingo card is generated using Python and the FPDF library 
-          (see below: About the Generator).  Your name is only used to put it in the top left corner of the bingo card, so make it whatever you want. 
-        </p>
-      </div>
-      <div id="generatorSec">
-        <input class="gen" type="text" id="name" placeholder="Enter your name">
-        <button class="gen" id="generate">Generate</button>
-        <p id="generating">Generating...</p>
-      </div>
-      <p>Note: The name field is not required but will put a name at the top left of the bingo card.</p>
-      <div id="rulesSection">
-        <h2>Intended Rules</h2>
-        <hr>
-        The intention with the bingo squares with the small circles and red numbers is that the event in the square has to happen at least that many times in 
-        the season before that event can be checked off.  For example, with the "Red Flag" square, the red flag has to be shown at least 4 times in the season.  
-        Every time there was a red flag you would cross off one of the numbers in the circle.  Once all the numbers are crossed off, you can check off the square.
-        <br><br>
-        Other than the above mentioned regular bingo rules apply.  
-        <br><br>
-        At the end of the day it's all just for fun, so play it however you want!
+                <a class="navbar-item">
+                    About the Generator
+                </a>
 
-        <h2>About the Generator</h2>
-        <hr>
-        <h2>Possible Squares</h2>
-        <hr>
-        <div class="possSquSec">
-          <h3>On every bingo card you will find: </h3>
-          <div class="squares">
-            <img class="squImg" src="imgs/racestarts.png" alt="Max Won the World Drivers Championship">
-            <p class="squInfoTitle">Max Won the World Drivers Championship</p>
-            <p class="squInfo">This square is intended to be crossed off after Max (inevitably) wins the 2023 WDC</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/safetycar.png" alt="Max Won the World Drivers Championship">
-            <p class="squInfoTitle">Max Won the World Drivers Championship</p>
-            <p class="squInfo">This square is intended to be crossed off after Max (inevitably) wins the 2023 WDC</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/vsc.png" alt="Max Won the World Drivers Championship">
-            <p class="squInfoTitle">Max Won the World Drivers Championship</p>
-            <p class="squInfo">This square is intended to be crossed off after Max (inevitably) wins the 2023 WDC</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/redflag.png" alt="Max Won the World Drivers Championship">
-            <p class="squInfoTitle">Max Won the World Drivers Championship</p>
-            <p class="squInfo">This square is intended to be crossed off after Max (inevitably) wins the 2023 WDC</p>
-          </div>
-          <h3>Remaining squares:</h3>
-          <div class="squares">
-            <img class="squImg" src="imgs/1.png" alt="Max Won the World Drivers Championship">
-            <p class="squInfoTitle">Max Won the World Drivers Championship</p>
-            <p class="squInfo">This square is intended to be crossed off after Max (inevitably) wins the 2023 WDC</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/2.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/3.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/4.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/5.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/6.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/7.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/8.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/9.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/10.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/11.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/12.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/13.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/14.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/15.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/16.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/17.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/18.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/19.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/20.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/21.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/22.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/23.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/24.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/25.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/26.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/27.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/28.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/29.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/30.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/31.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/32.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/33.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/34.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/35.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/36.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/37.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/38.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/39.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/40.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/41.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/42.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/43.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/44.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/45.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/46.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/47.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/48.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/49.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/50.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/51.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/52.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/53.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/54.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/55.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/56.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/57.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/58.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/59.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/60.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/61.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/62.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/63.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/64.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/65.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/66.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/67.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/68.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/69.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/70.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/71.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-          <div class="squares">
-            <img class="squImg" src="imgs/72.png" alt="message here">
-            <p class="squInfoTitle">message here</p>
-            <p class="squInfo">message here</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </body>
+                <a class="navbar-item">
+                    Possible Squares
+                </a>
+          
+                <div class="navbar-item has-dropdown is-hoverable">
+                  <a class="navbar-link">
+                    More
+                  </a>
+          
+                  <div class="navbar-dropdown">
+                    <a class="navbar-item">
+                      Github
+                    </a>
+                    <a class="navbar-item">
+                      Discord
+                    </a>
+                    <a class="navbar-item">
+                      Email
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </nav>
+          <!--==============================CODE FOR THE NAVBAR END==============================-->
+          <!--==============================CODE FOR THE ABOUT SECTION START==============================-->
+          <section class="section">
+            <h1 class="title">About</h1>
+            <h2 class="subtitle">
+              SUBTITLE
+            </h2>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore iure minima odit eius asperiores non, eos unde molestias quibusdam
+                corrupti? Eligendi vitae maiores, iure vero nihil earum dolor repellendus aut!
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore iure minima odit eius asperiores non, eos unde molestias quibusdam
+                corrupti? Eligendi vitae maiores, iure vero nihil earum dolor repellendus aut!
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore iure minima odit eius asperiores non, eos unde molestias quibusdam
+                corrupti? Eligendi vitae maiores, iure vero nihil earum dolor repellendus aut!
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore iure minima odit eius asperiores non, eos unde molestias quibusdam
+                corrupti? Eligendi vitae maiores, iure vero nihil earum dolor repellendus aut!
+            </p>
+          </section>
+          <!--==============================CODE FOR THE ABOUT SECTION END==============================-->
+          <!--==============================CODE FOR THE BINGO CARD GENERATOR START==============================-->
+          <section class="section">
+            <h1 class="title">F1 Bingo Card Generator</h1>
+            <h2 class="subtitle">
+              Last minute instructions
+            </h2>
+            <div class="container">
+                <div class="box">
+                    <label class="label">F1BingoCardInator3000</label>
+                    <input class="input" type="text" placeholder="Text input" id="name">
+                    <div class="control">
+                        <button class="button is-primary" id="generate">Generate</button>
+                    </div>
+                    <progress id="progress" class="progress is large is-danger" value="0" max="36">90%</progress>
+                    <p class="help">
+                        Note about name
+                    </p>
+                </div>
+            </div>
+          </section>
+          <!--==============================CODE FOR THE BINGO CARD GENERATOR END==============================-->
+          <!--==============================CODE FOR THE ABOUT THE GENERATOR START==============================-->
+          <section class="section">
+            <h1 class="title">About the Generator</h1>
+            <h2 class="subtitle">
+              SUBTITLE
+            </h2>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore iure minima odit eius asperiores non, eos unde molestias quibusdam
+                corrupti? Eligendi vitae maiores, iure vero nihil earum dolor repellendus aut!
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore iure minima odit eius asperiores non, eos unde molestias quibusdam
+                corrupti? Eligendi vitae maiores, iure vero nihil earum dolor repellendus aut!
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore iure minima odit eius asperiores non, eos unde molestias quibusdam
+                corrupti? Eligendi vitae maiores, iure vero nihil earum dolor repellendus aut!
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore iure minima odit eius asperiores non, eos unde molestias quibusdam
+                corrupti? Eligendi vitae maiores, iure vero nihil earum dolor repellendus aut!
+            </p>
+          </section>
+          <!--==============================CODE FOR THE ABOUT THE GENERATOR START==============================-->
+          <!--==============================CODE FOR THE POSSIBLE SQUARES START==============================-->
+          <section class="section">
+            <h1 class="title">About the Generator</h1>
+            <h2 class="subtitle">
+                On every bingo card you will find the following squares:
+            </h2>
+            <div class="columns">
+                <div class="column is-2">
+                    <div class="card">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/racestarts.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">Max has won the WDC</p>
+                            </div>
+                            <div class="content">
+                                This square is intended to be crossed off after Max (inevitably) wins the 2023 World Drivers' Championship.
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card card-equal-height">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/safetycar.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">placeholder</p>
+                            </div>
+                            <div class="content">
+                                placeholder
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card card-equal-height">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/vsc.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">placeholder</p>
+                            </div>
+                            <div class="content">
+                                placeholder
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card card-equal-height">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/redflag.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">placeholder</p>
+                            </div>
+                            <div class="content">
+                                placeholder
+                            </div>
+                        </div>
+                      </div>
+                </div>
+            </div>
+            <!--REST OF SQUARES-->
+            <h2 class="subtitle">
+                On every bingo card you will find a random 21 of the following squares:
+            </h2>
+            <div class="columns">
+                <div class="column is-2">
+                    <div class="card">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/1.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">Max has won the WDC</p>
+                            </div>
+                            <div class="content">
+                                This square is intended to be crossed off after Max (inevitably) wins the 2023 World Drivers' Championship.
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card card-equal-height">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/2.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">placeholder</p>
+                            </div>
+                            <div class="content">
+                                placeholder
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card card-equal-height">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/3.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">placeholder</p>
+                            </div>
+                            <div class="content">
+                                placeholder
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card card-equal-height">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/4.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">placeholder</p>
+                            </div>
+                            <div class="content">
+                                placeholder
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/5.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">Max has won the WDC</p>
+                            </div>
+                            <div class="content">
+                                This square is intended to be crossed off after Max (inevitably) wins the 2023 World Drivers' Championship.
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card card-equal-height">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/6.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">placeholder</p>
+                            </div>
+                            <div class="content">
+                                placeholder
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card card-equal-height">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/7.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">placeholder</p>
+                            </div>
+                            <div class="content">
+                                placeholder
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card card-equal-height">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/8.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">placeholder</p>
+                            </div>
+                            <div class="content">
+                                placeholder
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/9.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">Max has won the WDC</p>
+                            </div>
+                            <div class="content">
+                                This square is intended to be crossed off after Max (inevitably) wins the 2023 World Drivers' Championship.
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card card-equal-height">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/10.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">placeholder</p>
+                            </div>
+                            <div class="content">
+                                placeholder
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card card-equal-height">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/11.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">placeholder</p>
+                            </div>
+                            <div class="content">
+                                placeholder
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card card-equal-height">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/12.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">placeholder</p>
+                            </div>
+                            <div class="content">
+                                placeholder
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/13.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">Max has won the WDC</p>
+                            </div>
+                            <div class="content">
+                                This square is intended to be crossed off after Max (inevitably) wins the 2023 World Drivers' Championship.
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card card-equal-height">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/14.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">placeholder</p>
+                            </div>
+                            <div class="content">
+                                placeholder
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card card-equal-height">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/15.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">placeholder</p>
+                            </div>
+                            <div class="content">
+                                placeholder
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card card-equal-height">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/16.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">placeholder</p>
+                            </div>
+                            <div class="content">
+                                placeholder
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/17.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">Max has won the WDC</p>
+                            </div>
+                            <div class="content">
+                                This square is intended to be crossed off after Max (inevitably) wins the 2023 World Drivers' Championship.
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card card-equal-height">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/18.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">placeholder</p>
+                            </div>
+                            <div class="content">
+                                placeholder
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card card-equal-height">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/19.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">placeholder</p>
+                            </div>
+                            <div class="content">
+                                placeholder
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card card-equal-height">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/20.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">placeholder</p>
+                            </div>
+                            <div class="content">
+                                placeholder
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/21.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">Max has won the WDC</p>
+                            </div>
+                            <div class="content">
+                                This square is intended to be crossed off after Max (inevitably) wins the 2023 World Drivers' Championship.
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card card-equal-height">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/22.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">placeholder</p>
+                            </div>
+                            <div class="content">
+                                placeholder
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card card-equal-height">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/23.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">placeholder</p>
+                            </div>
+                            <div class="content">
+                                placeholder
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card card-equal-height">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/24.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">placeholder</p>
+                            </div>
+                            <div class="content">
+                                placeholder
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/25.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">Max has won the WDC</p>
+                            </div>
+                            <div class="content">
+                                This square is intended to be crossed off after Max (inevitably) wins the 2023 World Drivers' Championship.
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card card-equal-height">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/26.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">placeholder</p>
+                            </div>
+                            <div class="content">
+                                placeholder
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card card-equal-height">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/27.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">placeholder</p>
+                            </div>
+                            <div class="content">
+                                placeholder
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card card-equal-height">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/28.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">placeholder</p>
+                            </div>
+                            <div class="content">
+                                placeholder
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/29.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">Max has won the WDC</p>
+                            </div>
+                            <div class="content">
+                                This square is intended to be crossed off after Max (inevitably) wins the 2023 World Drivers' Championship.
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card card-equal-height">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/30.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">placeholder</p>
+                            </div>
+                            <div class="content">
+                                placeholder
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card card-equal-height">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/31.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">placeholder</p>
+                            </div>
+                            <div class="content">
+                                placeholder
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card card-equal-height">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/32.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">placeholder</p>
+                            </div>
+                            <div class="content">
+                                placeholder
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/33.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">Max has won the WDC</p>
+                            </div>
+                            <div class="content">
+                                This square is intended to be crossed off after Max (inevitably) wins the 2023 World Drivers' Championship.
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card card-equal-height">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/34.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">placeholder</p>
+                            </div>
+                            <div class="content">
+                                placeholder
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card card-equal-height">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/35.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">placeholder</p>
+                            </div>
+                            <div class="content">
+                                placeholder
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card card-equal-height">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/36.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">placeholder</p>
+                            </div>
+                            <div class="content">
+                                placeholder
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/37.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">Max has won the WDC</p>
+                            </div>
+                            <div class="content">
+                                This square is intended to be crossed off after Max (inevitably) wins the 2023 World Drivers' Championship.
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card card-equal-height">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/38.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">placeholder</p>
+                            </div>
+                            <div class="content">
+                                placeholder
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card card-equal-height">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/39.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">placeholder</p>
+                            </div>
+                            <div class="content">
+                                placeholder
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card card-equal-height">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/40.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">placeholder</p>
+                            </div>
+                            <div class="content">
+                                placeholder
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/41.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">Max has won the WDC</p>
+                            </div>
+                            <div class="content">
+                                This square is intended to be crossed off after Max (inevitably) wins the 2023 World Drivers' Championship.
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card card-equal-height">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/42.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">placeholder</p>
+                            </div>
+                            <div class="content">
+                                placeholder
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card card-equal-height">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/43.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">placeholder</p>
+                            </div>
+                            <div class="content">
+                                placeholder
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card card-equal-height">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/44.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">placeholder</p>
+                            </div>
+                            <div class="content">
+                                placeholder
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/45.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">Max has won the WDC</p>
+                            </div>
+                            <div class="content">
+                                This square is intended to be crossed off after Max (inevitably) wins the 2023 World Drivers' Championship.
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card card-equal-height">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/46.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">placeholder</p>
+                            </div>
+                            <div class="content">
+                                placeholder
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card card-equal-height">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/47.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">placeholder</p>
+                            </div>
+                            <div class="content">
+                                placeholder
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card card-equal-height">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/48.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">placeholder</p>
+                            </div>
+                            <div class="content">
+                                placeholder
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/49.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">Max has won the WDC</p>
+                            </div>
+                            <div class="content">
+                                This square is intended to be crossed off after Max (inevitably) wins the 2023 World Drivers' Championship.
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card card-equal-height">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/50.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">placeholder</p>
+                            </div>
+                            <div class="content">
+                                placeholder
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card card-equal-height">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/51.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">placeholder</p>
+                            </div>
+                            <div class="content">
+                                placeholder
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card card-equal-height">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/52.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">placeholder</p>
+                            </div>
+                            <div class="content">
+                                placeholder
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/53.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">Max has won the WDC</p>
+                            </div>
+                            <div class="content">
+                                This square is intended to be crossed off after Max (inevitably) wins the 2023 World Drivers' Championship.
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card card-equal-height">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/54.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 55">placeholder</p>
+                            </div>
+                            <div class="content">
+                                placeholder
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card card-equal-height">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/56.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">placeholder</p>
+                            </div>
+                            <div class="content">
+                                placeholder
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card card-equal-height">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/57.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">placeholder</p>
+                            </div>
+                            <div class="content">
+                                placeholder
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/58.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">Max has won the WDC</p>
+                            </div>
+                            <div class="content">
+                                This square is intended to be crossed off after Max (inevitably) wins the 2023 World Drivers' Championship.
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card card-equal-height">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/59.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">placeholder</p>
+                            </div>
+                            <div class="content">
+                                placeholder
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card card-equal-height">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/60.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">placeholder</p>
+                            </div>
+                            <div class="content">
+                                placeholder
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card card-equal-height">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/61.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">placeholder</p>
+                            </div>
+                            <div class="content">
+                                placeholder
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/62.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">Max has won the WDC</p>
+                            </div>
+                            <div class="content">
+                                This square is intended to be crossed off after Max (inevitably) wins the 2023 World Drivers' Championship.
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card card-equal-height">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/63.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">placeholder</p>
+                            </div>
+                            <div class="content">
+                                placeholder
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card card-equal-height">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/64.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">placeholder</p>
+                            </div>
+                            <div class="content">
+                                placeholder
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card card-equal-height">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/65.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">placeholder</p>
+                            </div>
+                            <div class="content">
+                                placeholder
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/66.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">Max has won the WDC</p>
+                            </div>
+                            <div class="content">
+                                This square is intended to be crossed off after Max (inevitably) wins the 2023 World Drivers' Championship.
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card card-equal-height">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/67.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">placeholder</p>
+                            </div>
+                            <div class="content">
+                                placeholder
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card card-equal-height">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/68.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">placeholder</p>
+                            </div>
+                            <div class="content">
+                                placeholder
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card card-equal-height">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/69.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">placeholder</p>
+                            </div>
+                            <div class="content">
+                                placeholder
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/70.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">Max has won the WDC</p>
+                            </div>
+                            <div class="content">
+                                This square is intended to be crossed off after Max (inevitably) wins the 2023 World Drivers' Championship.
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card card-equal-height">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/71.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">placeholder</p>
+                            </div>
+                            <div class="content">
+                                placeholder
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="column is-2">
+                    <div class="card card-equal-height">
+                        <div class="card-image">
+                          <figure class="image is-square">
+                            <img src="imgs/72.png" alt="Max has Won the WDC">
+                          </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media-content">
+                                <p class="title is 4">placeholder</p>
+                            </div>
+                            <div class="content">
+                                placeholder
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                
+            </div>
+            
+          </section>
+          <!--==============================CODE FOR THE POSSIBLE SQUARES START==============================-->
+          <!--==============================CODE FOR THE FOOTER START==============================-->
+          <footer class="footer">
+            <div class="content has-text-centered">
+              <p>
+                <div class="columns">
+                    <div class="column is 4">
+                        <a>Discord</a>
+                    </div>
+                    <div class="column is 4">
+                        <a href="https://github.com/f1-tools">GitHub</a>
+                    </div>
+                    <div class="column is 4">
+                        <a>Email</a>
+                    </div>
+                </div>
+                <br>
+                <strong>F1-Tools</strong> by <a href="https://github.com/f1-tools">F1-Tools</a>. The source code is licensed
+                <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
+              </p>
+            </div>
+          </footer>
+            <!--==============================CODE FOR THE FOOTER END==============================-->
+    </body>
 </html>
