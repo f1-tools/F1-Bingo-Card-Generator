@@ -6,10 +6,7 @@ import random
 import os
 import sys
 
-def main(argv = sys.argv):
-    #get the name from the command line
-    name = argv[1]
-
+def main(name):
     #create the pdf
     pdf = FPDF(orientation = 'P', unit = 'in', format='Letter')
     pdf.add_page()
@@ -88,4 +85,8 @@ def main(argv = sys.argv):
     pdf.output('bingo_card.pdf', 'F')
 
 if __name__ == '__main__':
-    main()
+    if len(sys.argv) != 2:
+        print('Usage: python bingo_maker.py <name>')
+        main("")
+    else:
+        main(sys.argv[1])
