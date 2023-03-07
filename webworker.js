@@ -42,8 +42,11 @@ async function loadPyodideAndPackages() {
 
     
     update_progress("Creating card... (this may take a while)");
-    // TODO: break up init into smaller functions so we can show progress
     self.card = await self.bingo_maker.Bingo();
+    for (let i = 0; i < 25; i++) {
+        update_progress();
+        self.card.steps(i);
+    }
     update_progress("Done and ready for name");
 }
 let pyodideReadyPromise = loadPyodideAndPackages();
