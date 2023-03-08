@@ -20,7 +20,7 @@ async function startPDF() {
     if (self.bingo_maker == undefined) {
         await loadPyodideAndPackages();
     }
-    step = -1;
+    step = 6;
     update_progress("Creating card... (this may take a while)");
     self.card = await self.bingo_maker.Bingo(true);
     for (let i = 0; i < 25; i++) {
