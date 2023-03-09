@@ -28,10 +28,10 @@
     <body>
         <script src="./main.js" type="module"></script>
         <!--==============================CODE FOR THE NAVBAR BEGIN==============================-->
-        <nav class="navbar" role="navigation" aria-label="main navigation">
+        <nav class="navbar is-fixed-top is-spaced has-shadow" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
-              <a class="navbar-item">
-                F1-Tools
+              <a class="navbar-item" href="https://f1-tools.github.io/F1-Bingo-Card-Generator/">
+                <img id="logo" src="f1-tools-rec.png" alt="F1 tools">
               </a>
           
               <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -84,1463 +84,1465 @@
             </div>
           </nav>
           <!--==============================CODE FOR THE NAVBAR END==============================-->
-          <!--==============================CODE FOR THE ABOUT SECTION START==============================-->
-          <section class="section" id="ABOUT">
-            <h1 class="title">About</h1>
-            <p>
-                The F1 Bingo Card Generator is a tool to help you generate a bingo card for the 2023 Formula 1 season in a matter of seconds.  
-                Every bingo card that is generated is in a random order, so you can play with your friends and family by asking them
-                to generate a card as well.  
-                The generators bingo cards are designed to be used with the rules below, but you can use it however you want. 
-
-                This tool was created because one of our developers was making F1 bingo cards for his friends and family, 
-                and he thought it would be a good idea to make a tool to help others do the same.
-
-                Please visit the <a href="https://github.com/f1-tools/F1-Bingo-Card-Generator" target="_blank">github</a> page if 
-                you like our tool, github stars are a great way to show your support.
-                We also have a discord server, where you can ask questions or give feedback.
-
-                
-            </p>
-          </section>
-          <!--==============================CODE FOR THE ABOUT SECTION END==============================-->
-          <!--==============================CODE FOR THE BINGO CARD GENERATOR START==============================-->
-          <section class="section" id="GENERATOR">
-            <h1 class="title">F1 Bingo Card Generator</h1>
-            <h2 class="subtitle">
-              Enter your name and click generate to get your bingo card!
-            </h2>
-            <div class="container">
-              
-                <div class="box">
-                  <label class="label">F1BingoCardInator3000</label>
-                  <input class="input" type="text" placeholder="Text input" id="name" autofocus>
-                  <div class="control">
-                      <button class="button is-danger my-2" id="generate">Generate</button>
-                  </div>
-                  <progress id="progress" class="progress is large is-danger my-2" value="0" max="36">90%</progress>
-                  <p class="help">
-                      Note: the name field is optional, but it is put in the top left corner of the card and used to make the 
-                      filename of the generated card.
-                  </p>
-            
-                </div>
-            </div>
-            <div class="container" id="docView">
-              <div class="box fileBox">
-                <p class="help">
-                  Don't like the card you generated?  Click generate again to get a completely new card!
-                </p>
-                <a id="downloadButton" class="button is-danger my-2">Download PDF</a>
-                <br>
-                <div id="iframe-box"></div>
-              </div>
-          </div>
-          </section>
-          <!--==============================CODE FOR THE BINGO CARD GENERATOR END==============================-->
-          <!--==============================CODE FOR THE ABOUT THE GENERATOR START==============================-->
-          <section class="section" id="ABOUTGEN">
-            <h1 class="title">About the Generator</h1>
-            <h2 class="subtitle">
-              How does it generate the bingo cards?
-            </h2>
-            <p>
-                The bingo card generator always puts the race starts square in the middle of the card.  It then 
-                places the safety car, vsc, and red flag squares randomly around the card.  There are 72 other possible squares
-                that are be placed at random in the remaining 21 squares.  The generator will never place two of the same square
-                in the same bingo card.  This means that if you generate more than one bingo card, it is highly unlikely that
-                you will get the card.  
-            </p>
-          </section>
-          <!--==============================CODE FOR THE ABOUT THE GENERATOR END==============================-->
-          <!--==============================CODE FOR THE RULES START==============================-->
-          <section class="section" id="RULES">
-            <h1 class="title">Intended Rules</h1>
-            <p>
-                The intention with the squares that have the circles with red numbers in them is that the event on the square
-                has to happen that many times for the square to be marked.  For example, the race starts square has 23 circles in it,
-                a race has to start 23 times for the square to be marked.  After each race start you cross off one number 
-                to keep track of how many times the event has happened.  If you cross off all the numbers, you can mark the square.
-                <br>
-                <br>
-                Other than the above normal bingo rules apply.
-                <br>
-                <br>
-                ...but saying all that you can use the cards however you want, just have fun!
-                <br>
-                <br>
-                See below for a list of all the possible squares and when the creators think they should be checked off.
-            </p>
-          </section>
-          <!--==============================CODE FOR THE RULES END==============================-->
-          <!--==============================CODE FOR THE POSSIBLE SQUARES START==============================-->
-          <section class="section" id="POSSSQU">
-            <h1 class="title">Possible Squares</h1>
-            <h2 class="subtitle">
-                On every bingo card you will find the following squares:
-            </h2>
-            <div class="columns is-multiline">
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/racestarts.png" alt="Race Starts">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">Race Starts</p>
-                            </div>
-                            <div class="content">
-                                This square appears at the center of every bingo card.  
-                                It has 23 race starts that must be crossed off before you can cross off the 
-                                bingo square.  It's upto you wether you choose to count race restarts as 
-                                race starts.  
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/safetycar.png" alt="Safety Car">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">Safety Car</p>
-                            </div>
-                            <div class="content">
-                                This square appears in every bingo card, but in a random location. 
-                                The intention is for the numbers to be crossed off when the safety 
-                                car goes on track until you reach 10 safety cars, then cross
-                                off the square.  The Virtual Safety Car does not count towards this square.
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/vsc.png" alt="Virtual Safety Car">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">Virtual Safety Car</p>
-                            </div>
-                            <div class="content">
-                                This square appears in every bingo card, but in a random location. 
-                                The intention is for the numbers to be crossed off when the virtual safety 
-                                car takes effect on track until you reach 8 virtual safety cars, then cross
-                                off the square.  The regular Safety Car does not count towards this square.
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/redflag.png" alt="Red Flag">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">Red Flag</p>
-                            </div>
-                            <div class="content">
-                                This square appears in every bingo card, but in a random location. 
-                                The intention is for the numbers to be crossed off when the red flag is 
-                                shown on track until you reach 4 red flags, then cross
-                                off the square.  
-                            </div>
-                        </div>
-                      </div>
-                </div>
-            </div>
-            <!--REST OF SQUARES-->
-            <h2 class="subtitle">
-                On every bingo card you will find a random 21 of the following squares:
-            </h2>
-            <div class="columns is is-multiline">
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/1.png" alt="Max has Won the WDC">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">Max has won the WDC</p>
-                            </div>
-                            <div class="content">
-                                When Max (inevitably) wins the 2023 World Drivers' Championship.
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/2.png" alt="First Time Winner">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">First time winner</p>
-                            </div>
-                            <div class="content">
-                                The winner of a race did not have a race win in 
-                                Formula 1 before that race.  It is upto you if you count sprint 
-                                race wins for this square.
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/3.png" alt="No Red Bull, Mercedes, or Ferrari appears on the podium">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">No Red Bull, Mercedes, or Ferrari appears on the podium</p>
-                            </div>
-                            <div class="content">
-                                No Red Bull, Mercedes, or Ferrari appears on the podium.  Everyone loves
-                                a good underdog story!  Especially when it's everyone on the podium.
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/4.png" alt="Lando Norris wins a race">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">Lando Norris wins a race</p>
-                            </div>
-                            <div class="content">
-                                When Lando Norris gets his first win in Formula 1.  
-                                It's only a matter of time, right guys? Right?
-                                It's upto you if a sprint race win counts for this square.
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/5.png" alt="First Lap Crash">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">First lap crash</p>
-                            </div>
-                            <div class="content">
-                                There is a crash during the first lap of a race.  Two are required for this square.
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/6.png" alt="Lewis has Won the WDC">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">Lewis has won the WDC</p>
-                            </div>
-                            <div class="content">
-                                When Lewis wins the 2023 World Drivers' Championship.  This ones a bit of a 
-                                long shot this year, but it's here for the die hard Lewis fans.
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/7.png" alt="Wet Race!">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">Wet Race</p>
-                            </div>
-                            <div class="content">
-                                When rain falls during a race.  Two are required for this square.
-                                It's upto you if rain during a sprint race counts for this square.
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/8.png" alt="Wet Qualifying">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">Wet Qualifying</p>
-                            </div>
-                            <div class="content">
-                                When rain falls during qualifying.  Two are required for this square.
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/9.png" alt="First Time Pole!">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">First time pole</p>
-                            </div>
-                            <div class="content">
-                                P1 during a qualifying session is the first time a driver has ever been on pole.
-                                It's upto you if you count a first pole from a sprint race for this square.
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/10.png" alt="Any team gets a 1-2 finish in a race">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">Any team gets a 1-2 finish</p>
-                            </div>
-                            <div class="content">
-                                Both drivers for a single constructor finish P1 and P2 in the same race.
-                                This has to happen two times for this square.  It is upto you if you count a 1-2
-                                in a sprint race for this square.
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/11.png" alt="Rookie Points!">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">Rookie Points</p>
-                            </div>
-                            <div class="content">
-                                When the F1 2023 rookies score their first points in Formula 1, check off the 
-                                circle with the rookie's number.  Once all 3 rookies have scored points, check off
-                                the square.
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/12.png" alt="Reserve Driver Drives">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">Reserve Driver Drives</p>
-                            </div>
-                            <div class="content">
-                                When a reserve driver replace a driver on the grid for a race weekend.  
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/13.png" alt="Ferrari wins in Italy">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">Ferrari wins in Italy</p>
-                            </div>
-                            <div class="content">
-                                Ferrari wins at any of the races in Italy.
-                                Lets's hope they can at least nail the strategy at one race.
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/14.png" alt="Twenty plus second pit stop">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">A pit stop takes longer than twenty seconds</p>
-                            </div>
-                            <div class="content">
-                                A pit stop takes longer than twenty seconds.  This is counting 
-                                time in the pit box, not the pit lane.  It doesn't count if the driver
-                                retires during the pit stop.
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/15.png" alt="All teams have scored points">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">All teams have scored points</p>
-                            </div>
-                            <div class="content">
-                                When all teams have scored points in a season.  This is counting the 
-                                constructors championship, not the drivers championship.
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/16.png" alt="All drivers have scored points">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">All drivers have scored points</p>
-                            </div>
-                            <div class="content">
-                                When all drivers have scored points in a season.  This is counting the 
-                                drivers championship, not the constructors championship.
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/17.png" alt="Zero to Hero, A win from eleventh or lower">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">Zero to Hero</p>
-                            </div>
-                            <div class="content">
-                                A driver goes from a non-points scoring grid position, to P1 during a race.
-                                For a regular race this is P11 to P1.  If you choose to count a sprint race for 
-                                this card it would be P9 to P1.
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/18.png" alt="Penalty given out mid-race">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">Penalty given out mid-race</p>
-                            </div>
-                            <div class="content">
-                                When the punishment for a penalty is given out during the race.  A penalty
-                                given out because of an event in free practice or qualifying does not count.
-                                A penalty given out post-race does not count to this square.
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/19.png" alt="Fire">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">Fire!</p>
-                            </div>
-                            <div class="content">
-                                Anything is visibly on fire on the track or in the pit lane.  
-                                Up there with the most scary things in F1.
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/20.png" alt="Rookie Podium">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">Rookie podium</p>
-                            </div>
-                            <div class="content">
-                                A 2023 rookie driver finishes on the podium.  It is upto
-                                you if sprint races count for this square.
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/21.png" alt="Zero DNF race">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">Zero DNF race</p>
-                            </div>
-                            <div class="content">
-                                There are no retirements from a race.  Sprint races do not count
-                                for this square.  
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/22.png" alt="Greater than 5 DNFs in a race">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">Greater than 5 DNFs</p>
-                            </div>
-                            <div class="content">
-                                There are more than 5 DNFs in one race.  It is upto you if
-                                sprint races count for this square.
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/23.png" alt="Driver Ignores Team orders">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">A driver ignores team orders</p>
-                            </div>
-                            <div class="content">
-                                When a driver is told to help their team mate, but they ignore the order.  
-                                Don't worry the commentary team will let you know when this one happens.
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/24.png" alt="Speeding in the pit lane">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">Speeding in the pit lane</p>
-                            </div>
-                            <div class="content">
-                                When someone is caught speeding in the pit lane.  
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/25.png" alt="Post race penalty">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">Post race penalty</p>
-                            </div>
-                            <div class="content">
-                                When a penalty is given out to a driver after a race.  After qualifying or free
-                                practice does not count.  Penalties given during the race do not count 
-                                for this square.
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/26.png" alt="Number 55 wins">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">Carlos Sainz wins a race</p>
-                            </div>
-                            <div class="content">
-                                When Carlos Sainz wins a race during the 2023 F1 season.  
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/27.png" alt="Double DNF">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">Double DNF</p>
-                            </div>
-                            <div class="content">
-                                When both teammates from one constructor retire from the same race.  This 
-                                way the team definitely doesn't score any points.
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/28.png" alt="Williams double points">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">Williams double points</p>
-                            </div>
-                            <div class="content">
-                                When both Williams drivers score points in the same race.  This one is a 
-                                bit of a long shot, but it would be nice to see.
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/29.png" alt="Team crash">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">Team crash</p>
-                            </div>
-                            <div class="content">
-                                When two teammates from the same team crash into each other, and at least one 
-                                of the gets damaged. 
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/30.png" alt="Haas double points">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">Haas double points</p>
-                            </div>
-                            <div class="content">
-                              When both Haas drivers score points in the same race.  This one is a 
-                              bit of a long shot, but it would be nice to see. 
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/31.png" alt="Alex dyes his hair">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">Alex Albon dyes his hair</p>
-                            </div>
-                            <div class="content">
-                                When Alex Albon dyes his hair a different color from what it was at the 
-                                start of the season (Blonde).  
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/32.png" alt="Victories from pole">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">Victories from pole</p>
-                            </div>
-                            <div class="content">
-                                When the winner of a race is the driver who started on pole position.
-                                Sprint races do not count for this square.  This must happen 
-                                7 times during the season for this square to be crossed off.
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/33.png" alt="Someone swears on-air">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">Someone swears on-air</p>
-                            </div>
-                            <div class="content">
-                                When someone gets caught swearing on a live broadcast. This is usually in the 
-                                cool down room after the race. The best way to tell if this happened is the 
-                                commentary team will usually apologize for the language. 
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/34.png" alt="A Mercedes takes out a Red Bull by rear tire">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">A Mercedes takes out a Red Bull br rear tire</p>
-                            </div>
-                            <div class="content">
-                                When a Mercedes driver takes out a Red Bull driver by hitting their rear tire.  
-                                This is a very specific square, but it does happen way to often.
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/35.png" alt="Crash with greater than 3 cars">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">Crash with greater than 3 cars</p>
-                            </div>
-                            <div class="content">
-                                When there is a crash involving more than 3 cars.  Up there with the
-                                most scary moments in F1.  
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/36.png" alt="Front Wing Change">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">Front Wing Change</p>
-                            </div>
-                            <div class="content">
-                                When a front wing gets changed in the pits.  This has to happen 5 times 
-                                during the season for this square to be crossed off.  
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/37.png" alt="Driver Retires">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">Driver Retires</p>
-                            </div>
-                            <div class="content">
-                                When a driver on the grid in 2023 announces their retirement from F1.
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/38.png" alt="Seven different race winners">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">Seven different race winners</p>
-                            </div>
-                            <div class="content">
-                                When seven different drivers have won a race during the season.  
-                                It is upto you if sprint races count for this square.
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/39.png" alt="Bono! My Tires are gone!">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">Bono! My tires are gone!</p>
-                            </div>
-                            <div class="content">
-                                When Lewis Hamilton complains to his engineer that his tires are gone, but then proceeds to set the fastest lap on those same tires.  
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/40.png" alt="Home win">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">Home win</p>
-                            </div>
-                            <div class="content">
-                                When any driver wins a race in their home country.  It is upto you if sprint races count for this square.
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/41.png" alt="All British Podium">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">All British podium</p>
-                            </div>
-                            <div class="content">
-                                When all three podium positions after a race are filled by British drivers.  It is upto you if sprint races count for this square.
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/42.png" alt="Danny Ricc races">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">Daniel Ricciardo participates in a race</p>
-                            </div>
-                            <div class="content">
-                                When Daniel Ricciardo steps in a reserve driver and takes part in a race weekend.  
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/43.png" alt="Rookie crash">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">Rookie crash</p>
-                            </div>
-                            <div class="content">
-                                When any of the 2023 rookies crash their car.  This has to happen 6 times for this square to be crossed off. 
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/44.png" alt="Someone locked up">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">Someone locked up</p>
-                            </div>
-                            <div class="content">
-                                When any driver locks up a wheel under braking.  This has to happen 15 times for this square to be crossed off.
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/45.png" alt="Aussie podium">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">Aussie podium</p>
-                            </div>
-                            <div class="content">
-                                When any Australian driver finishes on the podium.  It is upto you if sprint races count towards this square. 
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/46.png" alt="All commonwealth podium">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">All commonwealth podium</p>
-                            </div>
-                            <div class="content">
-                                When all the drivers on the podium are from a country in the commonwealth.  It is upto you if sprint races count towards this square.
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/47.png" alt="Race ends on time">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">Race ends because of the time limit</p>
-                            </div>
-                            <div class="content">
-                                When a race ends because of the time limit, and not because all of the laps have been completed. 
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/48.png" alt="Toto SMASHES a table">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">Toto smashes a table</p>
-                            </div>
-                            <div class="content">
-                                When the broadcast shows Toto Wolff smashing a table in anger.  
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/49.png" alt="Celerity Spotted">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">Celerity spotted</p>
-                            </div>
-                            <div class="content">
-                                When the broadcast shows a celerity in the pits during a race.  This has to happen 8 times for this square to be crossed off.
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/50.png" alt="A type of wet tire and slicks are used in the same race">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">A type of wet and slick tire are used in the same race</p>
-                            </div>
-                            <div class="content">
-                                When in the span of one race both a type of wet and slick tire are used.  Sprint races do count towards this square.
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/51.png" alt="A qualifying position is lost becuase of track limits">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">A qualifying position is lost becuase of track limits</p>
-                            </div>
-                            <div class="content">
-                                When a qualifying position is lost because the driver went outside the track limits.  This doesn't count if the position is not lost.  
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/52.png" alt="Silly Season Begins">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">Silly Season begins</p>
-                            </div>
-                            <div class="content">
-                                When a driver signs with a new team that they were not part of before, or when a team decares they are looking for a new driver for the next season.  
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/53.png" alt="Pole by Crashing">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">Pole by crashing</p>
-                            </div>
-                            <div class="content">
-                                When a driver crashes in qualifying and still gets pole.  
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/54.png" alt="Valtteri podiums with his mullet">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 55">Valtteri podiums with his mullet</p>
-                            </div>
-                            <div class="content">
-                                When Valtteri Bottas podiums with his mullet.  it is upto you if sprint races count towards this square.
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/56.png" alt="Hulkenberg podium">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">Hulkenberg podium</p>
-                            </div>
-                            <div class="content">
-                                When Nico Hulkenberg gets a podium in the F1 2023 season.
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/57.png" alt="Perez outqualifying Verstappen">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">Perez outqualifying Verstappen</p>
-                            </div>
-                            <div class="content">
-                                When Sergio Perez outqualifies Max Verstappen in the F1 2023 season.  
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/58.png" alt="Fake water present">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">Fake water present</p>
-                            </div>
-                            <div class="content">
-                                When there is fake water present at a race weekend in the F1 2023 season, like in Miami 2022.  
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/59.png" alt="Polotical Penalty">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">Polotical penalty</p>
-                            </div>
-                            <div class="content">
-                                When a driver gets a penalty because of the FIA's new anti-political message stance.
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/60.png" alt="Ferrari Fail">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">Ferrari Fail</p>
-                            </div>
-                            <div class="content">
-                                When Ferrari loses a good race result becuase they made an outragously bad strategy call.  
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/61.png" alt="New WDC or WCC">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">New WDC or WCC</p>
-                            </div>
-                            <div class="content">
-                                When a new driver wins the World Drivers' Championship for the first time or a new constructor wins World Constructors' Championship in the F1 2023 season.  
-                                For the WCC we will count new as starting in the turbo-hybrid era.
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/62.png" alt="A race gets canceled">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">A race gets canceled</p>
-                            </div>
-                            <div class="content">
-                                When a race gets canceled in the F1 2023 season, for any reason.
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/63.png" alt="Will the race happen?">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">Will the race happen?</p>
-                            </div>
-                            <div class="content">
-                                When the press speculates if the race will get canceled or not.  This would be because of the polotical state of the county the race is taking place in
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/64.png" alt="Max's teammate changes for next season">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">Max's teammate changes for next season</p>
-                            </div>
-                            <div class="content">
-                                When Max Verstappen's teammate changes for the next season.  This would be for the 2024 season. It's called the hotseat for a reason. 
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/65.png" alt="Limp to a win">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">Limp to a win</p>
-                            </div>
-                            <div class="content">
-                                A driver wins a race with significant damage to their car.
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/66.png" alt="Vettel races">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">Vettel races</p>
-                            </div>
-                            <div class="content">
-                                When Vettel steps in a reserve driver and takes part in a race weekend. 
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/67.png" alt="equal machinery">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">Equal Machinery</p>
-                            </div>
-                            <div class="content">
-                                When Nico Rosberg mentions that he beat Lewis Hamilton in equal machinery.
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/68.png" alt="Brundle Corrects Crofty">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">Brundle corrects Crofty</p>
-                            </div>
-                            <div class="content">
-                                When Martin Brundle corrects Crofty on a mistake he made during the broadcast.
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/69.png" alt="Driver lashes out">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">Driver lashes out</p>
-                            </div>
-                            <div class="content">
-                                When a driver lashes out because of a how m=bad their car is
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/70.png" alt="Stroll Crashes">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">Stroll crashes</p>
-                            </div>
-                            <div class="content">
-                                When Lance Stroll crashes his car while being passed or while passing another car.  Usually becuase he didn't look in his mirrors enough. 
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/71.png" alt="Fernando loses a podium">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">Fernando loses a podium</p>
-                            </div>
-                            <div class="content">
-                                When Fernando Alonso loses a podium because of reliability issues.
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                <div class="column is-2">
-                    <div class="card card-equal-height">
-                        <div class="card-image">
-                          <figure class="image is-square">
-                            <img src="imgs/72.png" alt="Gasly v. Piastri">
-                          </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media-content">
-                                <p class="title is 4">Gasly v. Piastri</p>
-                            </div>
-                            <div class="content">
-                                When Pierre Gasly beats Oscar Piastri in the World Drivers' Championship.
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                
-            </div>
-            
-          </section>
-          <!--==============================CODE FOR THE POSSIBLE SQUARES END==============================-->
-          <!--==============================CODE FOR THE FOOTER START==============================-->
-          <footer class="footer">
-            <div class="content has-text-centered">
+          <div id="EVERYTHING">
+            <!--==============================CODE FOR THE ABOUT SECTION START==============================-->
+            <section class="section" id="ABOUT">
+              <h1 class="title">About</h1>
               <p>
-                <div class="columns">
-                    <div class="column is 4">
-                        <a>Discord</a>
-                    </div>
-                    <div class="column is 4">
-                        <a href="https://github.com/f1-tools">GitHub</a>
-                    </div>
-                    <div class="column is 4">
-                        <a>Email</a>
-                    </div>
-                </div>
-                <br>
-                <strong>F1-Tools</strong> by <a href="https://github.com/f1-tools">F1-Tools</a>. The source code is licensed
-                <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
+                  The F1 Bingo Card Generator is a tool to help you generate a bingo card for the 2023 Formula 1 season in a matter of seconds.  
+                  Every bingo card that is generated is in a random order, so you can play with your friends and family by asking them
+                  to generate a card as well.  
+                  The generators bingo cards are designed to be used with the rules below, but you can use it however you want. 
+
+                  This tool was created because one of our developers was making F1 bingo cards for his friends and family, 
+                  and he thought it would be a good idea to make a tool to help others do the same.
+
+                  Please visit the <a href="https://github.com/f1-tools/F1-Bingo-Card-Generator" target="_blank">github</a> page if 
+                  you like our tool, github stars are a great way to show your support.
+                  We also have a discord server, where you can ask questions or give feedback.
+
+                  
               </p>
+            </section>
+            <!--==============================CODE FOR THE ABOUT SECTION END==============================-->
+            <!--==============================CODE FOR THE BINGO CARD GENERATOR START==============================-->
+            <section class="section" id="GENERATOR">
+              <h1 class="title">F1 Bingo Card Generator</h1>
+              <h2 class="subtitle">
+                Enter your name and click generate to get your bingo card!
+              </h2>
+              <div class="container">
+                
+                  <div class="box">
+                    <label class="label">F1BingoCardInator3000</label>
+                    <input class="input" type="text" placeholder="Text input" id="name" autofocus>
+                    <div class="control">
+                        <button class="button is-danger my-2" id="generate">Generate</button>
+                    </div>
+                    <progress id="progress" class="progress is large is-danger my-2" value="0" max="36">90%</progress>
+                    <p class="help">
+                        Note: the name field is optional, but it is put in the top left corner of the card and used to make the 
+                        filename of the generated card.
+                    </p>
+              
+                  </div>
+              </div>
+              <div class="container" id="docView">
+                <div class="box fileBox">
+                  <p class="help">
+                    Don't like the card you generated?  Click generate again to get a completely new card!
+                  </p>
+                  <a id="downloadButton" class="button is-danger my-2">Download PDF</a>
+                  <br>
+                  <div id="iframe-box"></div>
+                </div>
             </div>
-          </footer>
-            <!--==============================CODE FOR THE FOOTER END==============================-->
+            </section>
+            <!--==============================CODE FOR THE BINGO CARD GENERATOR END==============================-->
+            <!--==============================CODE FOR THE ABOUT THE GENERATOR START==============================-->
+            <section class="section" id="ABOUTGEN">
+              <h1 class="title">About the Generator</h1>
+              <h2 class="subtitle">
+                How does it generate the bingo cards?
+              </h2>
+              <p>
+                  The bingo card generator always puts the race starts square in the middle of the card.  It then 
+                  places the safety car, vsc, and red flag squares randomly around the card.  There are 72 other possible squares
+                  that are be placed at random in the remaining 21 squares.  The generator will never place two of the same square
+                  in the same bingo card.  This means that if you generate more than one bingo card, it is highly unlikely that
+                  you will get the card.  
+              </p>
+            </section>
+            <!--==============================CODE FOR THE ABOUT THE GENERATOR END==============================-->
+            <!--==============================CODE FOR THE RULES START==============================-->
+            <section class="section" id="RULES">
+              <h1 class="title">Intended Rules</h1>
+              <p>
+                  The intention with the squares that have the circles with red numbers in them is that the event on the square
+                  has to happen that many times for the square to be marked.  For example, the race starts square has 23 circles in it,
+                  a race has to start 23 times for the square to be marked.  After each race start you cross off one number 
+                  to keep track of how many times the event has happened.  If you cross off all the numbers, you can mark the square.
+                  <br>
+                  <br>
+                  Other than the above normal bingo rules apply.
+                  <br>
+                  <br>
+                  ...but saying all that you can use the cards however you want, just have fun!
+                  <br>
+                  <br>
+                  See below for a list of all the possible squares and when the creators think they should be checked off.
+              </p>
+            </section>
+            <!--==============================CODE FOR THE RULES END==============================-->
+            <!--==============================CODE FOR THE POSSIBLE SQUARES START==============================-->
+            <section class="section" id="POSSSQU">
+              <h1 class="title">Possible Squares</h1>
+              <h2 class="subtitle">
+                  On every bingo card you will find the following squares:
+              </h2>
+              <div class="columns is-multiline">
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/racestarts.png" alt="Race Starts">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">Race Starts</p>
+                              </div>
+                              <div class="content">
+                                  This square appears at the center of every bingo card.  
+                                  It has 23 race starts that must be crossed off before you can cross off the 
+                                  bingo square.  It's upto you wether you choose to count race restarts as 
+                                  race starts.  
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/safetycar.png" alt="Safety Car">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">Safety Car</p>
+                              </div>
+                              <div class="content">
+                                  This square appears in every bingo card, but in a random location. 
+                                  The intention is for the numbers to be crossed off when the safety 
+                                  car goes on track until you reach 10 safety cars, then cross
+                                  off the square.  The Virtual Safety Car does not count towards this square.
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/vsc.png" alt="Virtual Safety Car">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">Virtual Safety Car</p>
+                              </div>
+                              <div class="content">
+                                  This square appears in every bingo card, but in a random location. 
+                                  The intention is for the numbers to be crossed off when the virtual safety 
+                                  car takes effect on track until you reach 8 virtual safety cars, then cross
+                                  off the square.  The regular Safety Car does not count towards this square.
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/redflag.png" alt="Red Flag">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">Red Flag</p>
+                              </div>
+                              <div class="content">
+                                  This square appears in every bingo card, but in a random location. 
+                                  The intention is for the numbers to be crossed off when the red flag is 
+                                  shown on track until you reach 4 red flags, then cross
+                                  off the square.  
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+              </div>
+              <!--REST OF SQUARES-->
+              <h2 class="subtitle">
+                  On every bingo card you will find a random 21 of the following squares:
+              </h2>
+              <div class="columns is is-multiline">
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/1.png" alt="Max has Won the WDC">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">Max has won the WDC</p>
+                              </div>
+                              <div class="content">
+                                  When Max (inevitably) wins the 2023 World Drivers' Championship.
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/2.png" alt="First Time Winner">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">First time winner</p>
+                              </div>
+                              <div class="content">
+                                  The winner of a race did not have a race win in 
+                                  Formula 1 before that race.  It is upto you if you count sprint 
+                                  race wins for this square.
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/3.png" alt="No Red Bull, Mercedes, or Ferrari appears on the podium">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">No Red Bull, Mercedes, or Ferrari appears on the podium</p>
+                              </div>
+                              <div class="content">
+                                  No Red Bull, Mercedes, or Ferrari appears on the podium.  Everyone loves
+                                  a good underdog story!  Especially when it's everyone on the podium.
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/4.png" alt="Lando Norris wins a race">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">Lando Norris wins a race</p>
+                              </div>
+                              <div class="content">
+                                  When Lando Norris gets his first win in Formula 1.  
+                                  It's only a matter of time, right guys? Right?
+                                  It's upto you if a sprint race win counts for this square.
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/5.png" alt="First Lap Crash">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">First lap crash</p>
+                              </div>
+                              <div class="content">
+                                  There is a crash during the first lap of a race.  Two are required for this square.
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/6.png" alt="Lewis has Won the WDC">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">Lewis has won the WDC</p>
+                              </div>
+                              <div class="content">
+                                  When Lewis wins the 2023 World Drivers' Championship.  This ones a bit of a 
+                                  long shot this year, but it's here for the die hard Lewis fans.
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/7.png" alt="Wet Race!">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">Wet Race</p>
+                              </div>
+                              <div class="content">
+                                  When rain falls during a race.  Two are required for this square.
+                                  It's upto you if rain during a sprint race counts for this square.
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/8.png" alt="Wet Qualifying">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">Wet Qualifying</p>
+                              </div>
+                              <div class="content">
+                                  When rain falls during qualifying.  Two are required for this square.
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/9.png" alt="First Time Pole!">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">First time pole</p>
+                              </div>
+                              <div class="content">
+                                  P1 during a qualifying session is the first time a driver has ever been on pole.
+                                  It's upto you if you count a first pole from a sprint race for this square.
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/10.png" alt="Any team gets a 1-2 finish in a race">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">Any team gets a 1-2 finish</p>
+                              </div>
+                              <div class="content">
+                                  Both drivers for a single constructor finish P1 and P2 in the same race.
+                                  This has to happen two times for this square.  It is upto you if you count a 1-2
+                                  in a sprint race for this square.
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/11.png" alt="Rookie Points!">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">Rookie Points</p>
+                              </div>
+                              <div class="content">
+                                  When the F1 2023 rookies score their first points in Formula 1, check off the 
+                                  circle with the rookie's number.  Once all 3 rookies have scored points, check off
+                                  the square.
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/12.png" alt="Reserve Driver Drives">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">Reserve Driver Drives</p>
+                              </div>
+                              <div class="content">
+                                  When a reserve driver replace a driver on the grid for a race weekend.  
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/13.png" alt="Ferrari wins in Italy">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">Ferrari wins in Italy</p>
+                              </div>
+                              <div class="content">
+                                  Ferrari wins at any of the races in Italy.
+                                  Lets's hope they can at least nail the strategy at one race.
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/14.png" alt="Twenty plus second pit stop">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">A pit stop takes longer than twenty seconds</p>
+                              </div>
+                              <div class="content">
+                                  A pit stop takes longer than twenty seconds.  This is counting 
+                                  time in the pit box, not the pit lane.  It doesn't count if the driver
+                                  retires during the pit stop.
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/15.png" alt="All teams have scored points">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">All teams have scored points</p>
+                              </div>
+                              <div class="content">
+                                  When all teams have scored points in a season.  This is counting the 
+                                  constructors championship, not the drivers championship.
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/16.png" alt="All drivers have scored points">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">All drivers have scored points</p>
+                              </div>
+                              <div class="content">
+                                  When all drivers have scored points in a season.  This is counting the 
+                                  drivers championship, not the constructors championship.
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/17.png" alt="Zero to Hero, A win from eleventh or lower">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">Zero to Hero</p>
+                              </div>
+                              <div class="content">
+                                  A driver goes from a non-points scoring grid position, to P1 during a race.
+                                  For a regular race this is P11 to P1.  If you choose to count a sprint race for 
+                                  this card it would be P9 to P1.
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/18.png" alt="Penalty given out mid-race">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">Penalty given out mid-race</p>
+                              </div>
+                              <div class="content">
+                                  When the punishment for a penalty is given out during the race.  A penalty
+                                  given out because of an event in free practice or qualifying does not count.
+                                  A penalty given out post-race does not count to this square.
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/19.png" alt="Fire">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">Fire!</p>
+                              </div>
+                              <div class="content">
+                                  Anything is visibly on fire on the track or in the pit lane.  
+                                  Up there with the most scary things in F1.
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/20.png" alt="Rookie Podium">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">Rookie podium</p>
+                              </div>
+                              <div class="content">
+                                  A 2023 rookie driver finishes on the podium.  It is upto
+                                  you if sprint races count for this square.
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/21.png" alt="Zero DNF race">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">Zero DNF race</p>
+                              </div>
+                              <div class="content">
+                                  There are no retirements from a race.  Sprint races do not count
+                                  for this square.  
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/22.png" alt="Greater than 5 DNFs in a race">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">Greater than 5 DNFs</p>
+                              </div>
+                              <div class="content">
+                                  There are more than 5 DNFs in one race.  It is upto you if
+                                  sprint races count for this square.
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/23.png" alt="Driver Ignores Team orders">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">A driver ignores team orders</p>
+                              </div>
+                              <div class="content">
+                                  When a driver is told to help their team mate, but they ignore the order.  
+                                  Don't worry the commentary team will let you know when this one happens.
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/24.png" alt="Speeding in the pit lane">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">Speeding in the pit lane</p>
+                              </div>
+                              <div class="content">
+                                  When someone is caught speeding in the pit lane.  
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/25.png" alt="Post race penalty">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">Post race penalty</p>
+                              </div>
+                              <div class="content">
+                                  When a penalty is given out to a driver after a race.  After qualifying or free
+                                  practice does not count.  Penalties given during the race do not count 
+                                  for this square.
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/26.png" alt="Number 55 wins">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">Carlos Sainz wins a race</p>
+                              </div>
+                              <div class="content">
+                                  When Carlos Sainz wins a race during the 2023 F1 season.  
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/27.png" alt="Double DNF">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">Double DNF</p>
+                              </div>
+                              <div class="content">
+                                  When both teammates from one constructor retire from the same race.  This 
+                                  way the team definitely doesn't score any points.
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/28.png" alt="Williams double points">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">Williams double points</p>
+                              </div>
+                              <div class="content">
+                                  When both Williams drivers score points in the same race.  This one is a 
+                                  bit of a long shot, but it would be nice to see.
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/29.png" alt="Team crash">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">Team crash</p>
+                              </div>
+                              <div class="content">
+                                  When two teammates from the same team crash into each other, and at least one 
+                                  of the gets damaged. 
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/30.png" alt="Haas double points">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">Haas double points</p>
+                              </div>
+                              <div class="content">
+                                When both Haas drivers score points in the same race.  This one is a 
+                                bit of a long shot, but it would be nice to see. 
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/31.png" alt="Alex dyes his hair">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">Alex Albon dyes his hair</p>
+                              </div>
+                              <div class="content">
+                                  When Alex Albon dyes his hair a different color from what it was at the 
+                                  start of the season (Blonde).  
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/32.png" alt="Victories from pole">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">Victories from pole</p>
+                              </div>
+                              <div class="content">
+                                  When the winner of a race is the driver who started on pole position.
+                                  Sprint races do not count for this square.  This must happen 
+                                  7 times during the season for this square to be crossed off.
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/33.png" alt="Someone swears on-air">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">Someone swears on-air</p>
+                              </div>
+                              <div class="content">
+                                  When someone gets caught swearing on a live broadcast. This is usually in the 
+                                  cool down room after the race. The best way to tell if this happened is the 
+                                  commentary team will usually apologize for the language. 
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/34.png" alt="A Mercedes takes out a Red Bull by rear tire">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">A Mercedes takes out a Red Bull br rear tire</p>
+                              </div>
+                              <div class="content">
+                                  When a Mercedes driver takes out a Red Bull driver by hitting their rear tire.  
+                                  This is a very specific square, but it does happen way to often.
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/35.png" alt="Crash with greater than 3 cars">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">Crash with greater than 3 cars</p>
+                              </div>
+                              <div class="content">
+                                  When there is a crash involving more than 3 cars.  Up there with the
+                                  most scary moments in F1.  
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/36.png" alt="Front Wing Change">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">Front Wing Change</p>
+                              </div>
+                              <div class="content">
+                                  When a front wing gets changed in the pits.  This has to happen 5 times 
+                                  during the season for this square to be crossed off.  
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/37.png" alt="Driver Retires">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">Driver Retires</p>
+                              </div>
+                              <div class="content">
+                                  When a driver on the grid in 2023 announces their retirement from F1.
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/38.png" alt="Seven different race winners">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">Seven different race winners</p>
+                              </div>
+                              <div class="content">
+                                  When seven different drivers have won a race during the season.  
+                                  It is upto you if sprint races count for this square.
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/39.png" alt="Bono! My Tires are gone!">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">Bono! My tires are gone!</p>
+                              </div>
+                              <div class="content">
+                                  When Lewis Hamilton complains to his engineer that his tires are gone, but then proceeds to set the fastest lap on those same tires.  
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/40.png" alt="Home win">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">Home win</p>
+                              </div>
+                              <div class="content">
+                                  When any driver wins a race in their home country.  It is upto you if sprint races count for this square.
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/41.png" alt="All British Podium">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">All British podium</p>
+                              </div>
+                              <div class="content">
+                                  When all three podium positions after a race are filled by British drivers.  It is upto you if sprint races count for this square.
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/42.png" alt="Danny Ricc races">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">Daniel Ricciardo participates in a race</p>
+                              </div>
+                              <div class="content">
+                                  When Daniel Ricciardo steps in a reserve driver and takes part in a race weekend.  
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/43.png" alt="Rookie crash">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">Rookie crash</p>
+                              </div>
+                              <div class="content">
+                                  When any of the 2023 rookies crash their car.  This has to happen 6 times for this square to be crossed off. 
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/44.png" alt="Someone locked up">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">Someone locked up</p>
+                              </div>
+                              <div class="content">
+                                  When any driver locks up a wheel under braking.  This has to happen 15 times for this square to be crossed off.
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/45.png" alt="Aussie podium">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">Aussie podium</p>
+                              </div>
+                              <div class="content">
+                                  When any Australian driver finishes on the podium.  It is upto you if sprint races count towards this square. 
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/46.png" alt="All commonwealth podium">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">All commonwealth podium</p>
+                              </div>
+                              <div class="content">
+                                  When all the drivers on the podium are from a country in the commonwealth.  It is upto you if sprint races count towards this square.
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/47.png" alt="Race ends on time">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">Race ends because of the time limit</p>
+                              </div>
+                              <div class="content">
+                                  When a race ends because of the time limit, and not because all of the laps have been completed. 
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/48.png" alt="Toto SMASHES a table">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">Toto smashes a table</p>
+                              </div>
+                              <div class="content">
+                                  When the broadcast shows Toto Wolff smashing a table in anger.  
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/49.png" alt="Celerity Spotted">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">Celerity spotted</p>
+                              </div>
+                              <div class="content">
+                                  When the broadcast shows a celerity in the pits during a race.  This has to happen 8 times for this square to be crossed off.
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/50.png" alt="A type of wet tire and slicks are used in the same race">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">A type of wet and slick tire are used in the same race</p>
+                              </div>
+                              <div class="content">
+                                  When in the span of one race both a type of wet and slick tire are used.  Sprint races do count towards this square.
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/51.png" alt="A qualifying position is lost becuase of track limits">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">A qualifying position is lost becuase of track limits</p>
+                              </div>
+                              <div class="content">
+                                  When a qualifying position is lost because the driver went outside the track limits.  This doesn't count if the position is not lost.  
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/52.png" alt="Silly Season Begins">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">Silly Season begins</p>
+                              </div>
+                              <div class="content">
+                                  When a driver signs with a new team that they were not part of before, or when a team decares they are looking for a new driver for the next season.  
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/53.png" alt="Pole by Crashing">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">Pole by crashing</p>
+                              </div>
+                              <div class="content">
+                                  When a driver crashes in qualifying and still gets pole.  
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/54.png" alt="Valtteri podiums with his mullet">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 55">Valtteri podiums with his mullet</p>
+                              </div>
+                              <div class="content">
+                                  When Valtteri Bottas podiums with his mullet.  it is upto you if sprint races count towards this square.
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/56.png" alt="Hulkenberg podium">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">Hulkenberg podium</p>
+                              </div>
+                              <div class="content">
+                                  When Nico Hulkenberg gets a podium in the F1 2023 season.
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/57.png" alt="Perez outqualifying Verstappen">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">Perez outqualifying Verstappen</p>
+                              </div>
+                              <div class="content">
+                                  When Sergio Perez outqualifies Max Verstappen in the F1 2023 season.  
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/58.png" alt="Fake water present">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">Fake water present</p>
+                              </div>
+                              <div class="content">
+                                  When there is fake water present at a race weekend in the F1 2023 season, like in Miami 2022.  
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/59.png" alt="Polotical Penalty">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">Polotical penalty</p>
+                              </div>
+                              <div class="content">
+                                  When a driver gets a penalty because of the FIA's new anti-political message stance.
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/60.png" alt="Ferrari Fail">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">Ferrari Fail</p>
+                              </div>
+                              <div class="content">
+                                  When Ferrari loses a good race result becuase they made an outragously bad strategy call.  
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/61.png" alt="New WDC or WCC">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">New WDC or WCC</p>
+                              </div>
+                              <div class="content">
+                                  When a new driver wins the World Drivers' Championship for the first time or a new constructor wins World Constructors' Championship in the F1 2023 season.  
+                                  For the WCC we will count new as starting in the turbo-hybrid era.
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/62.png" alt="A race gets canceled">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">A race gets canceled</p>
+                              </div>
+                              <div class="content">
+                                  When a race gets canceled in the F1 2023 season, for any reason.
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/63.png" alt="Will the race happen?">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">Will the race happen?</p>
+                              </div>
+                              <div class="content">
+                                  When the press speculates if the race will get canceled or not.  This would be because of the polotical state of the county the race is taking place in
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/64.png" alt="Max's teammate changes for next season">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">Max's teammate changes for next season</p>
+                              </div>
+                              <div class="content">
+                                  When Max Verstappen's teammate changes for the next season.  This would be for the 2024 season. It's called the hotseat for a reason. 
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/65.png" alt="Limp to a win">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">Limp to a win</p>
+                              </div>
+                              <div class="content">
+                                  A driver wins a race with significant damage to their car.
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/66.png" alt="Vettel races">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">Vettel races</p>
+                              </div>
+                              <div class="content">
+                                  When Vettel steps in a reserve driver and takes part in a race weekend. 
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/67.png" alt="equal machinery">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">Equal Machinery</p>
+                              </div>
+                              <div class="content">
+                                  When Nico Rosberg mentions that he beat Lewis Hamilton in equal machinery.
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/68.png" alt="Brundle Corrects Crofty">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">Brundle corrects Crofty</p>
+                              </div>
+                              <div class="content">
+                                  When Martin Brundle corrects Crofty on a mistake he made during the broadcast.
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/69.png" alt="Driver lashes out">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">Driver lashes out</p>
+                              </div>
+                              <div class="content">
+                                  When a driver lashes out because of a how m=bad their car is
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/70.png" alt="Stroll Crashes">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">Stroll crashes</p>
+                              </div>
+                              <div class="content">
+                                  When Lance Stroll crashes his car while being passed or while passing another car.  Usually becuase he didn't look in his mirrors enough. 
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/71.png" alt="Fernando loses a podium">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">Fernando loses a podium</p>
+                              </div>
+                              <div class="content">
+                                  When Fernando Alonso loses a podium because of reliability issues.
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="column is-2">
+                      <div class="card card-equal-height">
+                          <div class="card-image">
+                            <figure class="image is-square">
+                              <img src="imgs/72.png" alt="Gasly v. Piastri">
+                            </figure>
+                          </div>
+                          <div class="card-content">
+                              <div class="media-content">
+                                  <p class="title is 4">Gasly v. Piastri</p>
+                              </div>
+                              <div class="content">
+                                  When Pierre Gasly beats Oscar Piastri in the World Drivers' Championship.
+                              </div>
+                          </div>
+                        </div>
+                  </div>
+                  
+              </div>
+              
+            </section>
+            <!--==============================CODE FOR THE POSSIBLE SQUARES END==============================-->
+            <!--==============================CODE FOR THE FOOTER START==============================-->
+            <footer class="footer">
+              <div class="content has-text-centered">
+                <p>
+                  <div class="columns">
+                      <div class="column is 4">
+                          <a>Discord</a>
+                      </div>
+                      <div class="column is 4">
+                          <a href="https://github.com/f1-tools">GitHub</a>
+                      </div>
+                      <div class="column is 4">
+                          <a>Email</a>
+                      </div>
+                  </div>
+                  <br>
+                  <strong>F1-Tools</strong> by <a href="https://github.com/f1-tools">F1-Tools</a>. The source code is licensed
+                  <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
+                </p>
+              </div>
+            </footer>
+              <!--==============================CODE FOR THE FOOTER END==============================-->
+          </div>
     </body>
 </html>

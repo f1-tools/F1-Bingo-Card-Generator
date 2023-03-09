@@ -30,3 +30,14 @@ iframe {
 .column {
     min-width: 300px;
 }
+
+.navbar-item img {
+    max-height: fit-content !important;
+    max-width: fit-content !important;
+
+    height:60px;
+}
+
+#EVERYTHING{
+    margin-top: 75px;
+}
