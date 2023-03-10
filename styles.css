@@ -6,21 +6,15 @@
 
 #docView {
     display: none;
-    height: 100%;
 }
 
-#iframe-box
-{
-    width: 100%;
-    height: 100%;
+#iframe-box {
+    aspect-ratio: 8.5 / 11;
 }
+
 iframe {
     width: 100%;
-}
-
-#fileBox{
     height: 100%;
-    width: 100%;
 }
 
 #progress {
@@ -35,6 +29,10 @@ iframe {
     height:60px;
     max-height: fit-content;
     max-width: fit-content;
+}
+
+.navbar-burger {
+    height: 76px;
 }
 
 #EVERYTHING{

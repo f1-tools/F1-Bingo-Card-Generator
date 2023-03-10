@@ -42,9 +42,9 @@ async function loadPyodideAndPackages() {
     self.micropip = await self.pyodide.pyimport("micropip");
     // Install fpdf
     update_progress("Installing fpdf...");
-    await self.micropip.install("https://raw.githubusercontent.com/f1-tools/F1-Bingo-Card-Generator/main/fpdf-1.7.2-py2.py3-none-any.whl");
+    await self.micropip.install("https://f1-tools.github.io/F1-Bingo-Card-Generator/fpdf-1.7.2-py2.py3-none-any.whl");
 
-    self.resources_url = 'https://raw.githubusercontent.com/f1-tools/F1-Bingo-Card-Generator/main/resources.zip';
+    self.resources_url = 'https://f1-tools.github.io/F1-Bingo-Card-Generator/resources.zip';
     update_progress("Loading resources... (this may take a while)");
     self.zipResponse = await fetch(self.resources_url);
     update_progress("Unpacking resources... (this may take a while)");

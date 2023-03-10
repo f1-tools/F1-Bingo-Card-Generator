@@ -12,17 +12,19 @@ function downloadPDF(encoded_string) {
         filename = "F1 Bingo Card - " + document.getElementById("name").value + ".pdf";
     }
     let ifg = document.createElement("iframe");
-    ifg.src = (URL.createObjectURL(blob));
+    ifg.src = (URL.createObjectURL(blob) + "#toolbar=0&navpanes=0&statusbar=0&messages=0&scrollbar=0&view=FitH");
     ifg.title = filename;
+    ifg.classList.add("has-ratio");
     document.getElementById("iframe-box").appendChild(ifg);
     document.getElementById("docView").style.display = "block";
-    // TODO:  pdf view height fix
-    
+
+    // generate download button
     let link = document.getElementById("downloadButton");
     link.href = window.URL.createObjectURL(blob);
     link.download = filename;
     link.target = "_blank";
 
+    // reset generate button
     document.getElementById("generate").style.display = "block";
     document.getElementById("name").disabled = false;
     document.getElementById("progress").style.display = "none";
@@ -125,5 +127,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     });
   });
+
+  // get all a elements in #navbarBasicExample
+  const $navbarLinks = Array.prototype.slice.call(document.querySelectorAll('#navbarBasicExample a'), 0);
+
+  const $navbarMenu = document.getElementById('navbarBasicExample');
+
+  // add click event to each link
+  $navbarLinks.forEach( el => {
+    el.addEventListener('click', () => {
+
+      // remove is-active class from all navbar-burger elements
+      $navbarBurgers.forEach( el => {
+        el.classList.remove('is-active');
+      });
+
+      // remove is-active class from navbar-menu
+      $navbarMenu.classList.remove('is-active');
+
+    }
+  )});
 
 });
