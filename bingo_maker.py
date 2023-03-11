@@ -65,29 +65,30 @@ class Bingo():
             #mark the square as taken
             self.taken[square] = True
         elif step >= 4 and step < 25:
-            #get a list of all the images in the imgs directory
-            imgs = os.listdir(self.local_dir + 'imgs')
-            #remove the images we have already placed
-            imgs.remove('racestarts.png')
-            imgs.remove('redflag.png')
-            imgs.remove('safetycar.png')
-            imgs.remove('vsc.png')
+            if step == 4:
+                #get a list of all the images in the imgs directory
+                self.imgs = os.listdir(self.local_dir + 'imgs')
+                #remove the images we have already placed
+                self.imgs.remove('racestarts.png')
+                self.imgs.remove('redflag.png')
+                self.imgs.remove('safetycar.png')
+                self.imgs.remove('vsc.png')
 
             #place 21 random images in random open locations without duplicates
             i = step - 5
             #pick a random image
-            img = random.choice(imgs)
+            self.img = random.choice(self.imgs)
             #pick a random square
             square = random.randint(0,24)
             #keep picking random squares until we find one that is not taken
             while self.taken[square]:
                 square = random.randint(0,24)
             #place the image in the square
-            self.pdf.image(self.local_dir + 'imgs/' + img, x = self.LOCATIONS[square][0], y = self.LOCATIONS[square][1], w = self.SQUARE_SIZE, h = self.SQUARE_SIZE, type = '', link = '')
+            self.pdf.image(self.local_dir + 'imgs/' + self.img, x = self.LOCATIONS[square][0], y = self.LOCATIONS[square][1], w = self.SQUARE_SIZE, h = self.SQUARE_SIZE, type = '', link = '')
             #mark the square as taken
             self.taken[square] = True
             #remove the image from the list so we don't place it again
-            imgs.remove(img)
+            self.imgs.remove(self.img)
 
 
     def name(self, name):
