@@ -66,8 +66,7 @@ class Bingo():
             self.taken[square] = True
         elif step >= 4 and step < 25:
             #get a list of all the images in the imgs directory
-            if step == 4:
-                imgs = os.listdir(self.local_dir + 'imgs')
+            imgs = os.listdir(self.local_dir + 'imgs')
             #remove the images we have already placed
             imgs.remove('racestarts.png')
             imgs.remove('redflag.png')
