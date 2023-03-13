@@ -1,5 +1,7 @@
 import { asyncRun } from "./py-worker.js";
 
+let num_runs = 0;
+
 function downloadPDF(encoded_string) {
     let decoded_string = atob(encoded_string);
     let bytes = new Uint8Array(decoded_string.length);
@@ -23,6 +25,11 @@ function downloadPDF(encoded_string) {
     link.href = window.URL.createObjectURL(blob);
     link.download = filename;
     link.target = "_blank";
+    link.onclick = function() {
+        gtag('event', 'file_downloaded', {});
+    };
+
+    gtag('event', 'file_generated', {});
 
     // reset generate button
     document.getElementById("generate").style.display = "block";
@@ -40,11 +47,23 @@ async function download() {
         downloadPDF(results);
       } else if (error) {
         console.log("pyodideWorker error: ", error);
+        gtag('event', 'exception', {
+            'description': 'pyodideWorker error',
+            'error': error,
+            'stack': (new Error).stack || 'no stack trace',
+            'fatal': true
+        });
       }
     } catch (e) {
-      console.log(
-        `Error in pyodideWorker at ${e.filename}, Line: ${e.lineno}, ${e.message}`,
-      );
+        console.log(
+            `Error in pyodideWorker at ${e.filename}, Line: ${e.lineno}, ${e.message}`,
+        );
+        gtag('event', 'exception', {
+            'description': 'pyodideWorker error',
+            'error': JSON.stringify(e),
+            'stack': (new Error).stack || 'no stack trace',
+            'fatal': true
+        });
     }
   }
 
@@ -56,16 +75,29 @@ async function save() {
         download();
       } else if (error) {
         console.log("pyodideWorker error: ", error);
+        gtag('event', 'exception', {
+            'description': 'pyodideWorker error',
+            'error': error,
+            'stack': (new Error).stack || 'no stack trace',
+            'fatal': true
+        });
       }
     } catch (e) {
-      console.log(
-        `Error in pyodideWorker at ${e.filename}, Line: ${e.lineno}, ${e.message}`,
-      );
+        console.log(
+            `Error in pyodideWorker at ${e.filename}, Line: ${e.lineno}, ${e.message}`,
+        );
+        gtag('event', 'exception', {
+            'description': 'pyodideWorker error',
+            'error': JSON.stringify(e),
+            'stack': (new Error).stack || 'no stack trace',
+            'fatal': true
+        });
     }
   }
 
 async function name() {
   try {
+    num_runs += 1;
     //hide generate button
     document.getElementById("generate").style.display = "none";
     //disable name input
@@ -75,21 +107,40 @@ async function name() {
     //remove previous iframe if it exists
     let ifg = document.getElementById("iframe-box").firstChild
     if (ifg != null) {
-      document.getElementById("iframe-box").removeChild(ifg);
+        document.getElementById("iframe-box").removeChild(ifg);
     }
     document.getElementById("docView").style.display = "none";
 
-    const { results, error } = await asyncRun('name', {username: document.getElementById("name").value});
+    let name = document.getElementById("name").value;
+
+    gtag('event', 'generate_button', {
+        'name': name,
+        'run_number': num_runs
+    });
+
+    const { results, error } = await asyncRun('name', {username: name});
     if (results) {
         console.log("Done 1/3");
         save();
     } else if (error) {
-      console.log("pyodideWorker error: ", error);
+        console.log("pyodideWorker error: ", error);
+        gtag('event', 'exception', {
+            'description': 'pyodideWorker error',
+            'error': error,
+            'stack': (new Error).stack || 'no stack trace',
+            'fatal': true
+        });
     }
   } catch (e) {
     console.log(
       `Error in pyodideWorker at ${e.filename}, Line: ${e.lineno}, ${e.message}`,
     );
+    gtag('event', 'exception', {
+        'description': 'pyodideWorker error',
+        'error': JSON.stringify(e),
+        'stack': (new Error).stack || 'no stack trace',
+        'fatal': true
+    });
   }
 }
 
