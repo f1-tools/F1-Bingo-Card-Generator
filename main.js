@@ -94,7 +94,7 @@ async function name() {
 }
 
 function event(e) {
-    if (e.keyCode == 13) {
+    if (e.key === 'Enter' || e.keyCode == 13) {
         name();
     }
 }
