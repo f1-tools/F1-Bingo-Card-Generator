@@ -1,8 +1,9 @@
 // webworker.js
 
-importScripts("https://cdn.jsdelivr.net/pyodide/v0.22.1/full/pyodide.js");
+importScripts('https://cdn.jsdelivr.net/pyodide/v0.22.1/full/pyodide.js');
 
 let step = -1;
+let generated_with_margins = false;
 
 function increment_step() {
     step += 1;
@@ -10,54 +11,54 @@ function increment_step() {
 }
 
 function update_progress(msg) {
-    if (msg != "" && msg != undefined) {
+    if (msg != '' && msg != undefined) {
         console.log(msg);
     }
     self.postMessage({ results: increment_step(), id: 0 });
 }
 
-async function startPDF() {
+async function startPDF(margins) {
+    generated_with_margins = margins;
     if (self.bingo_maker == undefined) {
         await loadPyodideAndPackages();
     }
     step = 6;
-    update_progress("Creating card... (this may take a while)");
-    self.card = await self.bingo_maker.Bingo(true);
+    update_progress('Creating card... (this may take a while)');
+    self.card = await self.bingo_maker.Bingo((web = true), (mobile = margins));
     for (let i = 0; i < 25; i++) {
         update_progress();
         await self.card.steps(i);
     }
-    update_progress("Done and ready for name");
+    update_progress('Done and ready for name');
 }
 
 async function loadPyodideAndPackages() {
     // Load pyodide
-    update_progress("Loading Pyodide... (this may take a while)");
+    update_progress('Loading Pyodide... (this may take a while)');
     self.pyodide = await loadPyodide();
     // Load micropip
-    update_progress("Loading micropip...");
-    await self.pyodide.loadPackage("micropip");
+    update_progress('Loading micropip...');
+    await self.pyodide.loadPackage('micropip');
     // Import micropip
-    update_progress("Importing micropip...")
-    self.micropip = await self.pyodide.pyimport("micropip");
+    update_progress('Importing micropip...');
+    self.micropip = await self.pyodide.pyimport('micropip');
     // Install fpdf
-    update_progress("Installing fpdf...");
-    await self.micropip.install("fpdf-1.7.2-py2.py3-none-any.whl");
+    update_progress('Installing fpdf...');
+    await self.micropip.install('fpdf-1.7.2-py2.py3-none-any.whl');
 
     self.resources_url = 'resources.zip';
-    update_progress("Loading resources... (this may take a while)");
+    update_progress('Loading resources... (this may take a while)');
     self.zipResponse = await fetch(self.resources_url);
-    update_progress("Unpacking resources... (this may take a while)");
+    update_progress('Unpacking resources... (this may take a while)');
     self.zipBinary = await self.zipResponse.arrayBuffer();
-    await self.pyodide.unpackArchive(self.zipBinary, "zip");
+    await self.pyodide.unpackArchive(self.zipBinary, 'zip');
 
-    // Import 
-    update_progress("Importing bingo_maker...");
-    await self.pyodide.loadPackagesFromImports("bingo_maker");
-    self.bingo_maker = await self.pyodide.pyimport("bingo_maker");
+    // Import
+    update_progress('Importing bingo_maker...');
+    await self.pyodide.loadPackagesFromImports('resources/bingo_maker');
+    self.bingo_maker = await self.pyodide.pyimport('resources.bingo_maker');
 }
-let pdfReadyPromise = startPDF();
-
+let pdfReadyPromise = startPDF(false);
 
 self.onmessage = async (event) => {
     // make sure loading is done
@@ -70,16 +71,23 @@ self.onmessage = async (event) => {
     }
     // Now is the easy part, the one that is similar to working in the main thread:
     try {
-        if (cmd === "save") {
+        if (cmd === 'save') {
             await self.card.save();
             self.postMessage({ results: increment_step(), id });
-        }
-        else if (cmd === "base64") {
+        } else if (cmd === 'base64') {
             const results = await self.card.base64_export();
             self.postMessage({ results, id });
-            pdfReadyPromise = startPDF();
+            pdfReadyPromise = startPDF(self.margins);
+        } else if (cmd === 'margins') {
+            if (self.margins != generated_with_margins) {
+                pdfReadyPromise = startPDF(self.margins);
+            }
         } else {
-            let set_name = self.username || "";
+            let set_name = self.username || '';
+            if (self.margins != generated_with_margins) {
+                pdfReadyPromise = startPDF(self.margins);
+                await pdfReadyPromise;
+            }
             await self.card.name(set_name);
             self.postMessage({ results: increment_step(), id });
         }
