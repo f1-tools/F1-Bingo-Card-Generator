@@ -344,7 +344,7 @@ async function generate() {
     // have download button work
     document.getElementById('downloadButton').onclick = function () {
         console.log("download pdf");
-        pdfDocGenerator.download();
+        pdfDocGenerator.download("Generated at f1-tools.github.io/F1-Bingo-Card-Generator/");
     };
     // have iframe display the pdf
     pdfDocGenerator.getDataUrl((dataUrl) => {
