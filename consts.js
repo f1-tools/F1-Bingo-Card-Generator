@@ -1,4 +1,8 @@
 export let base64ImageCache = {};
+
+/**
+ * The info about the placements so images can be placed by loops
+ */
 export const PlacementInfo = {
     L_SM_1: {
         width: 612,
@@ -97,6 +101,10 @@ export const PlacementInfo = {
         },
     },
 };
+
+/**
+ * The info about the images to make adding new images easier
+ */
  export const ImageInfo = {
     Race: {
         directory: "imgs/PNG/race/",
