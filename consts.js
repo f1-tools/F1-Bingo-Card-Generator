@@ -110,6 +110,6 @@ export const PlacementInfo = {
         backgrounds: ["L_SM_1", "L_BM_1", "L_SM_4", "L_BM_4", "A4_SM_1", "A4_BM_1", "A4_SM_4", "A4_BM_4"],
         middle: "race_starts.png",
         alwaysIncluded: ["sc.png", "vsc.png", "red_flag.png"],
-        num_of_general: 47
+        num_of_general: 50
     },
 };
